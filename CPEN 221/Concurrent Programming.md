@@ -1,0 +1,11 @@
+- Multiple Threads:
+	- Processing different bank account operations, what if 2 threads change the same account at the same time
+	- Use a shared cache of recent files, what if 2 threads insert the same file at the same time
+	- Creating pipeline with a queue for handling work to the next thread in sequence, what if enqueuer and dequeuer adjust a circular array queue at the same time
+- Why Threads?
+	- Code structures for responsiveness
+	- Processor Utilization
+	- Failure isolation
+- Mutual Exclusion , on thread only works on one section e.g. one bank account
+- We need a Lock, a java lock is an ADT
+	- **new**, **acquire**, **release**

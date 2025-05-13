@@ -49,3 +49,49 @@
 - **3.** discriminant is equal to zero, $r_{1},r_{2}=r$
 - $y_{1}(x)=x^r$, $y_{2}(x)=\frac{ \partial  }{ \partial r }y_{1}(x,r)$
 	- $y(x,r)=x^{r}=e^{r\ln x}=\ln x \cdot x^{r}$
+# Power Series Method
+- $P(x)y''+Q(x)y'+R(x)y=0$
+- Typically use numerical methods
+- Given a function $f(x)$ we approximate this function with the power series approximation $f(x) \approx \sum_{n=0}^{n}a_{n}x^n$
+- The power series is $f(x)=\sum_{n=0}^{\infty }a_{n}x^{n}$
+- If $f(x)$ is analytic $f(x)=\sum \frac{f^{(n)}(x_{0})}{n!}(x-x_{0})^n$ this is the taylor series, if $x_{0}=0$ then $f(x)=\sum \frac{f^{n}(0)}{n!}x^n$
+- This is only useful if the power series converges so lets look at the **convergence**
+- $f(x)=\sum a_{n}x^{n}$ converges if $l=\lim_{ N \to \infty }\sum_{n=0}^{N} a_{n}x^n$
+- If $R=0$ then the series only converges around $x_{0}$
+- If $l$ is finite then the power series converges in the interval $x_{0}-R,x_{0}+R$ where $R$ is the radius of convergence, $R$ is finite
+- If $R \to \infty$ then the series converges everywhere
+- We can prove the convergence with the **ratio test
+- The power series $f(x)=\sum_{n=0}^{\infty }a_{n}(x-x_{0})^{n}=\sum b_{n}$ converges if $\lim_{ n \to \infty }| \frac{b_{n+1}}{b_{n}} |=l<1$
+>[!example]
+>$f(x)=\sum \frac{1}{n!}x^n$
+>$b_{n}=\frac{x^n}{n!}$; $b_{n+1}=\frac{x^{n+1}}{(n+1)!}$
+>$\lim_{ n \to \infty } |\frac{n!}{(n+1)!}|\cdot|x|=0$
+>So then the series converges for all real numbers
+
+>[!example]
+>$f(x)=\sum \frac{(x-1)^{2n}}{4^n}$
+>$\lim_{ n \to \infty } | \frac{(x-1)^{2n+2}}{4^{n+1}}\cdot \frac{4^{n}}{(x)^{2n}}$
+>$|\frac{(x-1)^{2}}{4}| \lim_{ n \to \infty }1 \implies |\frac{(x-1)^{2}}{4}|<1$
+>Which means that $|x-1|<2$ so $R=2$ centerd at $x_{0}=1$
+>So the interval of convergence is $(-1,3)$
+
+
+- Now to **solve** the ODE $P(x)y''+Q(x)y'+R(x)y=0$ with the power series
+- Let $y(x)=\sum a_{n}(x-x_{0})^n$, $y'=\sum a_{n}n(x-x_{0})^{n}$, $y''=\sum a_{n}n(n-1)(x-x_{0})^n$
+>[!example]
+>$y'-y=0$, the solution to this is clearly $y=Ce^x$ but lets use power series
+>$y(x)=\sum a_{n}x^{n}$, $y'=\sum a_{n}nx^{n-1}$
+>So then we have $\sum_{n=1} a_{n}nx^{n-1}-\sum a_{n}x^{n}=0$, let $m=n-1$
+>$\sum_{m=0}^{\infty}a_{m+1}(m+1)x^{m}-\sum_{m=0}^{\infty}a_{m}x^{m}=0$ Now we can combine these series into one series
+>$\sum_{m=0}^{\infty}[a_{m+1}(m+1)-a_{m}]x^{m}=0$, this is only possible if $a_{m+1}(m+1)-a_{m}=0$
+>$a_{m+1} = \frac{a_{m}}{m+1}$ for $m=1,2,3,\dots$, recursive relation
+>$a_{0}$ is arbitrary
+>$m=0\implies a_{1}=a_{0}$
+>$m=1\implies a_{2}=\frac{a_{1}}{2}=\frac{a_{0}}{2}$
+>$m=2\implies a_{3}=\frac{a_{2}}{3}=\frac{a_{1}}{6}=\frac{a_{0}}{6}$
+>$m=n\implies a_{m+1}=\frac{a_{0}}{(m+1)!}$
+>So $y(x)=a_{0}+a_{1}x+\frac{a_{2}x}{2}+\dots=a_{0}\left( 1+x+\frac{x^2}{2}+\dots \right)$
+>$y(x)=Ce^x$
+
+
+

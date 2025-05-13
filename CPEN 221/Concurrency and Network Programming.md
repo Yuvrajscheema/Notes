@@ -1,0 +1,8 @@
+ - Too much milk problem
+	 - You come home and see theres no milk
+	 - you got to buy milk
+	 - your roommate comes back while you are out
+	 - they see there is no milk
+	 - the go to buy milk
+	 - oh no! two milk
+- parallel [[Streams and lambdas#Streams|streams]] are a form of concurrency  

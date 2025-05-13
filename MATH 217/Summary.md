@@ -1,0 +1,19 @@
+- **Differential calculus**: Rate of change, basic concepts: limits, computational tools, relation to approximation, tangent lines, use in min/max, graphing
+- **Integral calculus**: Accumulation/Summation summing an infinite number of infinitesimally small things, basic concepts: limits, relation to area, volume, averages, computational techniques
+- FTC: $F(x)=\int_{t=0}^{x}f(t)dt, \frac{dF}{dx}=f(x)$
+- **Vector** is a quantity with magnitude and direction
+- Distance between points $(x_{1},y_{1},z_{1})$ and $(x_{2},y_{2},z_{2})$ is given by $\sqrt{ (x_{1}-x_{2})^{2}+(y_{1}-y_{2})^{2}+(z_{1}-z_{2})^{2} }$ 
+- Arc length $l = \int_{t = t_{start}}^{t_{end}} |\vec{r}'(t)|\,dt$ assuming we only traverse the curve once
+- If we have $F(x,y,z)=0$ we can differentiate $z$ implicitly without solving, get $\frac{\partial z}{\partial x}$ and $\frac{\partial z}{\partial y}$ , $\frac{\partial z}{\partial x} = -\frac{F_{x}}{F_{z}}$ 
+- Example $c^{2}=a^{2}+b^{2}-2ab\cos \theta$ then we get $F = a^{2}+b^{2}-2ab\cos \theta-c^2$ then $F_{\theta} = 2ab\sin \theta$, $F_{a} = 2a-2b\cos \theta$, and $F_{c}=-2c$ then $\frac{\partial \theta}{\partial c} = -\frac{F_{c}}{F_{\theta}}=\frac{c}{ab\sin \theta}$  and $\frac{\partial \theta}{\partial a} = -\frac{F_{a}}{F_{\theta}}=\frac{b\cos \theta-a}{ab\sin \theta}$ 
+- Tangent plance equation $z=z_{0}+f_{x}(x_{0},y_{0})(x-x_{0})+f_{y}(x_{0},y_{0})(y-y_{0})$ 
+- Directional derivative: $(D_{\vec{u}}f)(x_{0},y_{0})$ gives the rate of change of $f$ at $x_{0},y_{0}$ in the direction of $\vec{u}$ 
+- $(D_{\vec{u}}f)(x_{0},y_{0})=(\nabla f)(x_{0},y_{0}) \cdot \vec{u}$
+- When traveling along a contour line then the directional derivative is going to be $0$ $\nabla f$ is perpendicular to contour lines
+- $D=f_{x x}f_{y y} - f_{xy}^2$
+- if $(x_{0},y_{0})$ is a critical point then:
+- If $D(x_{0},y_{0})<0$ saddle point 
+- If $D(x_{0},y_{0})>0$ if $f_{x x}>0$ local min and if $f_{y y}<0$ local max
+- To find min/max of $f$ constrained to a curve we can parameterize to get one variable problem
+- **LAGRANGE** $\begin{cases} f_{x}=\lambda g_{x} \\ f_{y} = \lambda g_{y} \\ g(x,y)=C\end{cases}$
+- EXAM 2 MATERIAL ALREADY REVIEWED
