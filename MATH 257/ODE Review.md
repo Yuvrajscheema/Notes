@@ -37,3 +37,15 @@
 >$r^2+2r+1=0\implies r_{1,2}=-1$
 >$y(x)=C_{1}e^{-x}+C_{2}xe^{-x}$
 
+## Cauchy-Euler ODE
+- Of the form $x^2y''+axy'+by=0$, $y(x)=x^r$
+- $(r^{2}(r-1)+ar+b)x^{r}=0$ if $x^{r}\neq {0}$
+- So then the characteristic equation is $r^{2}(r-1)+ar+b=0$
+- $r=\frac{-(a-1)\pm \sqrt{ (a-q)^{2}-4b }}{2}$
+- **1.** positive discriminant gives two distinct roots, $r_{1},r_{2}$
+- $y(x)=C_{1}x^{r_{1}}+C_{2}x^{r_{2}}$
+- **2.** negative discriminant, two complex roots, $r_{1}=\alpha+\beta i,r_{2}=\alpha-\beta i$
+- $y(x)=x^\alpha[C_{1}x^{i\beta}+C_{2}x^{-i\beta}]=x^{\alpha}[C_{1}e^{i\beta \ln x}+C_{2}e^{-i\beta \ln x}]$ this gives us $x^{\alpha}[C_{1}\cos(\beta \ln x)+C_{2}\sin(\beta \ln x)]$
+- **3.** discriminant is equal to zero, $r_{1},r_{2}=r$
+- $y_{1}(x)=x^r$, $y_{2}(x)=\frac{ \partial  }{ \partial r }y_{1}(x,r)$
+	- $y(x,r)=x^{r}=e^{r\ln x}=\ln x \cdot x^{r}$
