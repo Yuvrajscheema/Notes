@@ -94,4 +94,72 @@
 >$y(x)=Ce^x$
 >Now you can very easily find the radius of convergance
 
+>[!example]
+>$x^{2}y'-y=0$ we will solve this classically and with the power series
+>$\frac{dy}{y}=x^{-2}dx$
+>$\ln y=-\frac{1}{x}+C$
+>$y=Ae^{-1/x}$
+>Now lets try the power series method, $y(x)=\sum_{n=0}^{\infty} a_{n}x^{n}$
+>$y'=\sum_{n=1}^{\infty} a_{n}nx^{n-1}$
+>Now plug this into the equation:
+>$\sum_{n=1}^{\infty}a_{n}nx^{n+1}-\sum_{n=0}^{\infty}a_{n}x^{n}=0$, let $m=n+1$
+>Now we have the following
+>$\sum_{m=2}^{\infty}a_{m-1}(m-1)x^{m}-\sum_{n=0}^{\infty}a_{n}x^{n}=0$
+>$\sum_{m=2}^{\infty}a_{m-1}(m-1)x^{m}-\sum_{n=2}^{\infty}a_{n}x^{n}-a_{0}x^{0}-a_{1}x^{1}=0$
+>$-a_{0}-a_{1}x^{1}+\sum_{m=2}^{\infty}[a_{m-1}(m-1)-a_{m}]x^{m}$
+>this equation only holds if $a_{0}=0$ and $a_{1}=0$
+>$a_{m}=a_{m-1}(m-1)$, $m=2,3,4\dots$
+>$m=2\implies a_{2}=a_{1} \cdot_{1}=0$
+>$a_{m}=0\forall m$
+>$y(x)=0$
+>The difference between the results are caused by $x=0$ being a singular point
+- Power series method is only valid at **ordinary points**
+>[!definition]
+>Given $P(x)y''+Q(x)y'+R(x)y=0$
+>A point $x_{0}$ is an ordinary point of the equation if $p(x)=\frac{Q(x)}{P(x)}$ and $q_{1}(x)=\frac{R(x)}{P(x)}$$ are analtic at $x0$
+>i.e. $p(x)=p_{0}+p_{1}(x-x_{0})+p_{2}(x-x_{0})^{2}+\dots$, $q_{1}(x)=q_{1,0}+q_{1,1}(x-x_{0})+q_{1,2}(x-x_{0})^2$
+>If a point is an ordinary point then the power series will work!
+
+>[!example]
+>$y''-\sqrt{ x }y'+xy=0$
+>$p(x)=-\sqrt{ x },\quad q_{1}(x)=x$
+>$x=0$ is a singular point as the derivative is not defined there
+
+>[!example]
+>$x^{2}y'-y=0$
+>$x=0$ is a singular point as the derrivatve is not defined there, $x=1$ is an ordinary point, so we get the following
+>$x^{2}\sum_{n=1}^{\infty}a_{n}n(x-1)^{n-1}-\sum a_{n}(x-1)^{n}=0$ now we complete the square for $x^2$
+>$x^{2}=(x-1)^{2}+2x-1=(x-1)^2+2(x-1)+1$
+>Now we have
+>$\sum_{n=1}a_{n}n(x-1)^{n+1}+\sum_{n=1}2a_{n}n(x-1)^{n}+\sum_{n=1}a_{n}n(x-1)^{n-1}-\sum a_{n}(x-1)^{n}=0$
+>
+>
+
+- Given the equation $(x-x_{0})^{2}y''+\alpha(x-x_{0})y'+ y=0$
+- So we have $p(x)=\frac{1}{x-x_{0}}$ and $q(x)=\frac{1}{(x-x_{0})^{2}}$
+- $P(x)y''+Q(x)y'+R(x)y=0$
+- $y''+P(x)y'+q(x)y=0$
+- $(x-x_{0})^{2}y''+(x-x_{0})[(x-x_{0})p(x)]y'+(x-x_{0})^{2}q(x)y=0$
+
+>[!Definition]
+>A point $x=x_{0}$ is a **regular singular point** if
+>$\lim_{ x \to x_{0} }(x-x_{0})p(x)$ and $\lim_{ x \to x_{0} }(x-x_{0})^{2}q(x)$ are finite
+
+>[!Example]
+>$(1-x^{2})y''-2xy'+\beta y$
+>$x_{0}=\pm_{1}$ are singular points, now we must check if they are regular
+>At $x_{0}=1$, $\lim_{ x \to 1 }\left(x-1)[ -\frac{2x}{1-x^{2}} \right]=1$ and $\lim_{ x \to 1 }(x-1)^{2}\left[ \frac{\beta}{1-x^{2}} \right]=0$
+
+>[!definition]
+>Forbenius series
+> If $x=x_{0}$ is RSP, $y(x)=(x-x_{0})^{r}\sum a_{n}(x-x_{0})^{n}$
+$y(x)=\sum a_{n}(x-x_{0})^{n+r}$
+
+>[!example]
+>$4xy''+2y'+y=0$
+>$x=0$ is a regular singular point
+>so $y(x)=\sum a_{n}x^{n+r},\quad y'=\sum a_{n}(n+r)x^{n+r-1}, \quad y''=\sum a_{n}(n+r)(n+r-1)(x^{n+r-2})$
+>Now we can plug this in to get the following
+>$\sum 4a_{n}(n+r)(n+r-1)x^{n+r-1}+\sum 2a_{n}(n+r)x^{n+r-1}+\sum a_{n}x^{n+r}=0$
+
 
