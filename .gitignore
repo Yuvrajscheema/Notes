@@ -1,0 +1,11 @@
+# macOS system file
+.DS_Store
+
+# Obsidian-related files
+.obsidian.vimrc
+.obsidian/
+
+# Custom directories
+CRAZYFLIE/
+DnD/
+
