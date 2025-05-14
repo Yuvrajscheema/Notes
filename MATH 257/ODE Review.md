@@ -92,6 +92,6 @@
 >$m=n\implies a_{m+1}=\frac{a_{0}}{(m+1)!}$
 >So $y(x)=a_{0}+a_{1}x+\frac{a_{2}x}{2}+\dots=a_{0}\left( 1+x+\frac{x^2}{2}+\dots \right)$
 >$y(x)=Ce^x$
-
+>Now you can very easily find the radius of convergance
 
 
