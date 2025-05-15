@@ -176,4 +176,21 @@ $y(x)=\sum a_{n}(x-x_{0})^{n+r}$
 >$y_{1}(x)=x^{r}\sum a_{n}x^{n}=a_{0}+a_{1}x+a_{2}x^{2}+\dots$
 >Now do the same with $r=\frac{1}{2}$
 
-
+- Given $r_{1}$ and $r_{2}$
+- Case 1: $r_{1}-r_{2}$ is not an integer, the solution is $y(x)=C_{1}y_{1}(x)+C_{2}y_{2}(x)$
+- Case 2: $r_{1}-r_{2}=0$ $y_{2}(x)=\frac{ \partial  }{ \partial r }y_{1}(x,r)\mid_{r=r_{1}}$
+	- $y_{1}=c^{r}\sum a_{n}x^{n}$
+	- $x^{r}=e^{r\ln x}$
+	- Differentiate to get $\ln x\cdot e^{r\ln x}=x^{r}\ln x$
+	- $y_{2}(x)=y_{1}\ln x+\sum b_{n}x^{n+r}$
+- Case 3: $r_{1}-r_{2}$ is an integer
+	- $y_{2}(x)=\frac{ \partial  }{ \partial r }((r-r_{1})y_{1}(x))$
+	-  $y_{2}(x)=a\ln (x)y_{1}+\sum bnx^{n+r}$
+- $x^{2}y''+xy'+(x^{2}-\alpha^{2})y=0$ this is a **bessel equation** used mainly for vibrations
+- $p(x)=\frac{1}{x}$
+- $q(x)=\frac{x^{2}-\alpha^{2}}{x^2}$
+- $p_{0}=\lim_{ x \to 0 } \frac{x}{x}=1$
+- $q_{0}=\lim_{ x \to 0 } \frac{x^2(x^2-\alpha^{2})}{x^2}=-\alpha^{2}$
+- $y(x)=\sum a_{n}x^{n+r}$
+- $r(r-1)+rp_{0}+q_{0}=0$
+- $r(r-1)+r-\alpha^{2}=0\implies r=\pm\alpha$
