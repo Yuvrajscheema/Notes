@@ -159,7 +159,21 @@ $y(x)=\sum a_{n}(x-x_{0})^{n+r}$
 >$4xy''+2y'+y=0$
 >$x=0$ is a regular singular point
 >so $y(x)=\sum a_{n}x^{n+r},\quad y'=\sum a_{n}(n+r)x^{n+r-1}, \quad y''=\sum a_{n}(n+r)(n+r-1)(x^{n+r-2})$
->Now we can plug this in to get the following
+>Now we can plug these derivatives to get the following
 >$\sum 4a_{n}(n+r)(n+r-1)x^{n+r-1}+\sum 2a_{n}(n+r)x^{n+r-1}+\sum a_{n}x^{n+r}=0$
+>Now we will convert the final term, let $n+r=m+r-1 \implies m=n+1$
+>$\sum [4a_{m}(m+r)(m+r-1)+2a_{m}(m+r)]x^{m+r-1}+\sum_{m=1} a_{m}x^{m+r-1}=0$
+>The third term can become $\sum_{m=1}^{\infty}a_{m-1}x^{m+r-1}$
+>$[4a_{0}r(r-1)+2a_{0}r]{x^{r-1}}\sum_{m=1}(2a_{m}(m+r)[2(m+4-1)+1]+a_{m-1})x^{n+r-1}=0$
+>The coefficients of the lowest $x$ power gives you the indicial equation
+>$a_{o}[4r(r-1)+2r+0]=0$
+>$2r(r-1)+r=0\implies r_{1,2}=0, \frac{1}{2}$
+>From the summation we found earlier we have $a_{m}=\frac{-a_{m-1}}{2(m+r)[2(m+r)+1]}$
+>This right here is the recurrence relation
+>If $r=0$ then $a_{m}=-\frac{a_{m-1}}{2m(2m-1)}$
+>$a_{1}=\frac{-a_{0}}{2\cdot 1}$
+>$a_{2}=-\frac{a_{1}}{4\cdot3}=\frac{a_{0}}{4!}$
+>$y_{1}(x)=x^{r}\sum a_{n}x^{n}=a_{0}+a_{1}x+a_{2}x^{2}+\dots$
+>Now do the same with $r=\frac{1}{2}$
 
 
