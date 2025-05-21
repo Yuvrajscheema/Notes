@@ -194,3 +194,9 @@ $y(x)=\sum a_{n}(x-x_{0})^{n+r}$
 - $y(x)=\sum a_{n}x^{n+r}$
 - $r(r-1)+rp_{0}+q_{0}=0$
 - $r(r-1)+r-\alpha^{2}=0\implies r=\pm\alpha$
+# Summary
+- Review first and second order odes
+- Series solutions of odes
+	- Taylor series
+	- Forbenius series $\to$ regular singular points
+- Bessel functions $x^{2}y''+xy'+(x^{2}-\alpha^{2})y=0$, $x=0$ is a regular singular point

@@ -1,0 +1,10 @@
+- The order of a PDE is the value of the highest order partial derivative occurring in the equation
+- The degree is the power of the highest derivative
+- $Au_{xx}+Bu_{xy}+Cu_{yy}+Du_{x}+Eu_{y}+Fu=G$ is a second order liner PDE, the PDE is said to be homogeneous if $G=0$ 
+- Analogous to characterizing quadratic equations $AX^{2}+BXY+CY^{2}+DX+EY=k$ as hyperbolic, parabolic or elliptic, determined by the sign of $\Delta=B^{2}-4AC$
+	- $\Delta>0$: Hyperbolic, example $u_{tt}=c^{2}u_{xx}$  **wave equation
+	- $\Delta=0$: Parabolic, example $u_{t}=u_{x x}$,  **heat/diffusion equation
+	- $\Delta<0$: Elliptic, example $u_{x x}+u_{yy}=f$, **Laplace's equation** if $f=0$, otherwise **Poisson equation**
+- Given the flux density relationship $\frac{ \partial u }{ \partial t }+c\frac{ \partial u }{ \partial x }=0$, we can guess the solution $u(x,t)=e^{at+bx}$
+- Plug this into the equation to get $e^{at+bx}(a+c b)=0$
+- 
