@@ -24,7 +24,7 @@
 - The heat equation is given by $u_{t}=\alpha u_{x x}$
 - We need the boundary conditions for the $x$ domain and we need the initial conditions
 - For example the Dirichlet $u(0,t)=A, u(h,t)=B$
-- The Neumen boundary conditions $u_{x}(0,t)=A, u_{x}(L,t)=B$
+- The Neumann boundary conditions $u_{x}(0,t)=A, u_{x}(L,t)=B$
 - The Robin type conditions $u(0,t)+u_{x}(0,t)=A$
 - Now we will solve an example
 - $u_{t}=a^{2}u_{x x}$
@@ -38,9 +38,30 @@
 - $u_{n}^{k}=u(x_{n},t_{k})$
 - So now we have $\frac{u_{n}^{k+1}-u_{n}^{k}}{\Delta t}=\alpha^{2}\left[ \frac{u_{n+1}^{k}-2u_{n}^{k}+u_{n-1}^{k}}{\Delta x^{2}} \right]$
 - Rearrange the equation to get $u_{n}^{k+1}=(1-2r)u_{n}^{k}+ru_{n+1}^{k}+ru_{n-1}^{k}$ where $r=\frac{\alpha^{2}\Delta t}{\Delta x^{2}}$
-$\begin{bmatrix}u_{0} \\ u_{1} \\.\\.\\.\\u_{N}\end{bmatrix}^{k+1}=\begin{bmatrix}r & 1-2r & r &0&0&\dots \\ 0 &r & 1-2r  &r & 0 & \dots\\ . &.&.&.&. \\ .&. &.&.&.\\.&.&.&.&.\end{bmatrix}\begin{bmatrix}u_{0}\\.\\.\\.\\.\\u_{N}\end{bmatrix}^{k}$
+$\begin{bmatrix}u_{0} \\ u_{1} \\.\\.\\.\\u_{N}\end{bmatrix}^{k+1}=\begin{bmatrix}r & 1-2r & r &0&0&\dots \\ 0 &r & 1-2r  &r & 0 & \dots\\ . &.&.&.&. \\ .&. &.&.&.\\.&.&.&.&.\\.&.&.&.&.\end{bmatrix}\begin{bmatrix}u_{0}\\.\\.\\.\\.\\u_{N}\end{bmatrix}^{k}$
 - $u(0,t)=0\implies u_{0}^{k}=0$
 - Therefore by recursive protocol $u_{0}^{k+1}=u_{0}^{k}=0$
-
-
-
+- Now if we have the Neumann boundary condition, $\frac{ \partial u(0,t) }{ \partial x }=q_{0}, \quad \frac{ \partial u(L,t) }{ \partial x }=p_{0}$
+- We know that $u_{0}^{k+1}=ru_{1}^{k}+(1-2r)u^{k}_{0}+ru_{-1}^{k}$
+- This creates a ghost node at $-1$, we will use the central difference scheme to amend this
+- $u_{x}(0,t)=\frac{u_{1}^{k}-u_{-1}^{k}}{2\Delta x}$
+- $u_{-1}^{k}=-2\Delta xq_{0}+u_{1}^{k}$
+- So then we have $u_{0}^{k+1}=ru_{1}^{k}+(1-2r)u_{0}^{k}+r[u_{1}^{k}-2\Delta xq_{0}]$
+- Now for the **upper** boundary, $N+1$ is the ghost node
+- $u_{N}^{k+1}=ru_{N+1}^{k}+(1-2r)u_{N}^{k}+ru_{N-1}^{k}$
+- We replace the term using the equation $u_{x}(L,t)=\frac{u_{N+1}^{k}-u_{N-1}^{k}}{2\Delta x}$, as we did for the lower ghost node
+# Wave equation
+- $u_{tt}=\alpha^{2}u_{x x}$
+- B.C.  $u(0,t)=u(L,t)=0$
+- I.C.  $u(x,0)=f(x); \quad u_{t}(x,0)=g(x)$
+- Use central difference scheme for time and space
+- $u_{n}^{k}=u(x_{n},t_{k})$
+- $\frac{u_{n}^{k+1}-2u_{n}^{k}+u_{n}^{k-1}}{\Delta t^{2}}=\frac{\alpha^{2}(u^{k}_{n+1}-2u_{n}^{k}+u_{n-1}^{k})}{\Delta x^{2}}$
+- $c=\frac{\alpha \Delta t}{\Delta x}$
+- Now we can rearrange the equation to get:      $u_{n}^{k+1}=c^{2}u_{n+1}^{k}+2(1-c^{2})u_{n}^{k}+c^{2}u_{n-1}^{k}-u_{n}^{k-1}$
+- What does this look like in matrix form?
+$\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} & 2(1-c^{2}) & 0 & 0 & \dots\\. & . & . & . & . & \dots\end{bmatrix}\vec{u}^{k}+\begin{bmatrix}-1 & 0 & 0 & \dots\\0 & -1 & 0 & \dots\\. & . & . & \dots\end{bmatrix}\vec{u}^{k-1}$
+- $u_{n}^{1}=c^{2}u_{n+1}^{0}+2(1-c^{2})u_{n}^{0}+c^{2}u_{n-1}^{0}-u_{n}^{-1}$
+- $u_{n}^{-1}$ is a ghost node!, we must discretize
+- $\frac{{u_{n}^{1}-u_{n}^{-1}}}{2\Delta t}=g(x)\implies\quad u_{n}^{-1}=u_{n}^{1}-2\Delta tg(x)$
+- 
