@@ -78,4 +78,69 @@ $\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} 
 - **Jacobian Iteration Scheme**
 - $u_{m,n}^{()}\to u_{m,n}^{(1)}\to\dots\to u_{m,n}^{(k)}$
 - $u_{m,n}^{(k+1)}=\frac{1}{4}[u_{m+1,n}^{(k)}+u_{m-1,n}^{(k)}+u_{m,n+1}^{(k)}+u_{m,n-1}^{(k)}]$
+# Fourier
+- $f(x)=\sum_{n=0}^{\infty}b_{n}[\sin(nx)+a_{n}\cos(nx)]$
+- Laplace Language
+# Seperation of Variables
+- $u(x,t)=T(t)\cdot X(x)$
+- Systems of ODEs, Linear PDE
+- **Step 1** Assume $u(x,t)=T(t)\cdot X(x)$
+- **Step 2** Plug into the PDE to get ODEs
+- **Step 3** ODE in space gives us the Boundary Value Problem, eigenvalue problem
+- BVP$\mapsto \begin{cases} X''(x)+2X=0 \\X(0)=X(L)=0\end{cases}$
+
+## Heat equation with Dirichlet B.C. (Sine series)
+- $u_{t}=\alpha^{2}u_{x x}\quad 0<x<L$
+- B.C. $u(0,t)=u(L,t)=0$
+- I.C. $u(x,0)=f(x)$
+- **1** Let $u(x,t)=X(x)\cdot T(t)$
+- $u_{t}=X\cdot T'$
+- $u_{xx}=X''\cdot T$
+- **2** plug these back into the equation
+- $XT'=\alpha^{2}X''T$
+- $\frac{T'}{T}=\frac{\alpha^{2}X''}{X}$
+- This is only possible if $\frac{T'}{\alpha^{2}T}=\frac{X''}{X}=\lambda$
+- So now we have the two equations $T'-\lambda \alpha^{2}T=0$
+- $X''-\lambda X=0$
+- $T(t)=-e^{\alpha^{2}\lambda t}$
+- Now we have an eigenvalue problem
+- $\begin{cases}X''-\lambda X=0 \\ X(0)=X(L)\end{cases}$
+- let $X=e^{rx}$
+- $r^{2}=\lambda=0\implies$ we can get different solutions
+- **Case 1**: $\lambda>0$,    let $\lambda=\mu^{2}$
+- $r^{2}-\mu^{2}=0\implies r=\pm \mu$
+- So then $y(x)=Ae^{\mu x}+Be^{-\mu x}\to y(x)=A\cosh(\mu x)+B\sinh(\mu x)$
+- Now lets check the boundary conditions $y(x)=a\sin(x)+b\cos(x)$
+- $y(0)=0=b$
+- Going down this road only gives a trivial solution which is not what we want
+- More found in the notes on canvas
+- **Case 2**:  $\lambda=0$
+- $X''=0\implies X(x)=Ax+B$
+- $X(0)=B=0, \quad X(L)=AL=0\implies A=0$ so we have another trivial solution
+- **Case 3** $\lambda<0$
+- $r^{2}+\mu^{2}=0\implies R=\pm i \mu$
+- $X(x)=A\cos(\mu x)+B\sin(\mu x)$
+- $X(0)=A=0$
+- $X(L)=B\sin(\mu L)=0\implies \sin(\mu L)=0$, this is only possible if $\mu L=n\pi$
+- $\mu_{n}=\frac{n\pi}{L}$,the eigenvalues are $-\mu_{n}^{2}=-\left( \frac{n\pi}{L} \right)^{2}$
+- $X_{n}(x)=B_{n}\sin(\mu_{n}x), n=1,2,3,\dots$
+- $U_{n}(x,t)=X_{n}(x)T(t)=e^{-(\frac{n\pi}{L}\alpha)^{2}t}\sin(\mu_{n}x)$
+- $u(x,t)=\sum_{n=1}^{\infty}b_{n}U_{n}(x,t)=\sum_{n=1}^{\infty}b_{n}e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\sin\left( \frac{n\pi}{L}x \right)$
+- $u(x,0)=f(x)=\sum_{n=1}^{\infty}b_{n}\sin\left( \frac{n\pi}{L}x \right)$
+- So the series is the [[PDEs#Fourier|Fourier]] series of $f(x)$
+- To find $b_{n}$, we employ the orthogonal property of $\sin$ and $\cos$
+- $\int_{-L}^{L}\sin\left( \frac{n\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx=\begin{cases}0, \quad m\neq n \\ L, \quad m = n &  & \end{cases}$
+- $\int_{-L}^{L}\cos\left( \frac{m\pi x}{L} \right)\cos\left( \frac{n\pi x}{L} \right)dx=\begin{cases}0, \quad m\neq n \\ L, \quad m = n \neq 0 \\2L, \quad m=n=0 \end{cases}$
+- $\int_{-L}^{L}\sin\left( \frac{m\pi x}{L} \right)\cos\left( \frac{n\pi x}{L} \right)dx=0$
+## Prove Orthogonality
+- $\cos(A+B)=\cos A\cos B-\sin A\sin B$
+- $\cos(A-B)=\cos A\cos B+\sin A\sin B$
+- Add them together to get $\cos A\cos B=\frac{1}{2}[\cos(A+B)+\cos(A-B)]$
+- let $A=\frac{m\pi x}{L},\quad B=\frac{n\pi x}{L}$
+- let $m=0=n$
+- $\frac{1}{2}\int_{-L}^{L}(1+1)=2L$
+- $m=n\neq 0$
+- $A=B=\frac{m\pi x}{L}$
+- $\frac{1}{2}\int_{-L}^{L}\left[ \cos\left( \frac{2m\pi x}{L} \right)+1 \right]dx$ 
+- $\int_{-L}^{L}\cos\left( \frac{2m\pi x}{L} \right)dx=\sin\left( \frac{2m\pi x}{L} \right)\mid_{-L}^{L}=0$
 - 
