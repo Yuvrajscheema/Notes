@@ -127,12 +127,86 @@ $\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} 
 - $U_{n}(x,t)=X_{n}(x)T(t)=e^{-(\frac{n\pi}{L}\alpha)^{2}t}\sin(\mu_{n}x)$
 - $u(x,t)=\sum_{n=1}^{\infty}b_{n}U_{n}(x,t)=\sum_{n=1}^{\infty}b_{n}e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\sin\left( \frac{n\pi}{L}x \right)$
 - $u(x,0)=f(x)=\sum_{n=1}^{\infty}b_{n}\sin\left( \frac{n\pi}{L}x \right)$
-- So the series is the [[PDEs#Fourier|Fourier]] series of $f(x)$
+- So the series is the [[PDEs#Fourier|Fourier]] sine series of $f(x)$
 - To find $b_{n}$, we employ the orthogonal property of $\sin$ and $\cos$
 - $\int_{-L}^{L}\sin\left( \frac{n\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx=\begin{cases}0, \quad m\neq n \\ L, \quad m = n &  & \end{cases}$
 - $\int_{-L}^{L}\cos\left( \frac{m\pi x}{L} \right)\cos\left( \frac{n\pi x}{L} \right)dx=\begin{cases}0, \quad m\neq n \\ L, \quad m = n \neq 0 \\2L, \quad m=n=0 \end{cases}$
 - $\int_{-L}^{L}\sin\left( \frac{m\pi x}{L} \right)\cos\left( \frac{n\pi x}{L} \right)dx=0$
-## Prove Orthogonality
+- Now we are going to multiply $f(x)$ by $\sin\left( \frac{m\pi x}{L} \right)$
+- This gives us the following
+- $\int_{-L}^{L}f(x)\sin\left( \frac{m\pi x}{L} \right)dx=\int_{-L}^{L}\sum_{n=1}^{\infty}b_{n}\sin\left( \frac{n\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx$
+- $\int_{-L}^{L}b_{1}\sin\left( \frac{\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)+\int_{-L}^{L}b_{2}\sin\left( \frac{2\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)+\dots$
+- There will be some index where we get $\int_{-L}^{L}b_{m}\sin\left( \frac{m\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx$ which is the only term that is not equal to zero
+- So now we have $\int_{-L}^{L}f(x)\sin\left( \frac{m\pi x}{L} \right)dx=b_{m}L$
+- $b_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\sin\left( \frac{n\pi x}{L} \right)dx$
+- Now lets look at the boundary and initial conditions again
+- B.C: $u(0,t)=u(1,t)=0$
+- I.C.: $u(x,0)=x$
+- $u(x,t)=\sum_{n=1}^{\infty}b_{n}e^{-(n\pi)^{2}t}\sin(n\pi x)$
+- $b_{n}=\int_{-1}^{1}x\sin(n\pi x)dx$
+- Time to integrate by parts, $u=x \implies du=1$, $dv=\sin(n\pi x)\implies v=-\frac{1}{n\pi}\cos(n\pi x)$
+- $b_{n}=\left[ -\frac{x}{n\pi}\cos(n\pi x) \right]\mid_{-1}^{1}+\frac{1}{n\pi}\int \cos(n\pi x)dx$
+- $b_{n}=-\frac{1}{n\pi}[\cos(n\pi)+\cos(n\pi)]+0=-\frac{2}{n\pi}\cos(n\pi), n=1,2,3,..$
+- $\cos(n\pi)=(-1)^{n}, \implies b_{n}=\frac{2}{n\pi}(-1)^{n+1}, n=1,2,3,\dots$
+- So now we have $f(x)=x=\sum_{n=1}^{\infty} \frac{2}{n\pi}(-1)^{n+1}\sin(n\pi x)$
+- $\frac{\pi}{4}=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\dots$
+- Lets look at $f\left( \frac{1}{2} \right)$, we want an $x$ value that doesn't make the values disappear
+- $f\left( \frac{1}{2} \right)=\frac{1}{2}=\frac{2}{\pi}\left[ 1 - \frac{1}{3}+\frac{1}{5}+\dots \right]$
+- $\frac{1}{2}=\frac{2}{\pi}\cdot \frac{\pi}{4}=\frac{1}{2} \checkmark$
+## Neumann B.C. (Fourier Cosine Series)
+- $u_{t}=\alpha u_{x x}$
+- $u_{x}(0,t)=0,u_{x}(L, t)=0, u(x,0)=0$
+- $u_{t}=XT',\quad u_{xx}=X''T$
+- $XT'=\alpha^{2}X''T\implies \frac{T'}{\alpha^{2}T}=\frac{X''}{X}=\lambda$
+- $T'-\lambda\alpha^{2}T=0,\quad \quad X''-\lambda X=0$
+- $X'(0)=X'(L)=0$ these two lines give us the eigenvalue problem
+- $T=Ce^{\lambda\alpha^{2}t}$
+- Let $X(x)=e^{rx}$
+- Then plugging that in gives us the equation $r^{2}-\lambda=0$
+- **Case 1**: $\lambda>0$, let $\lambda=\mu^{2}$
+- $r^{2}-\mu^{2}=0\implies r=\pm \mu$
+- $X(x)=A\cosh(\mu x)+B\sinh(\mu x)$
+- $X'(x)=A\mu\sinh(\mu x)+B\mu\cosh(\mu x)$
+- $X'(0)=0=B\mu \implies B=0$
+- $X'(L)=0=A\mu \sinh(\mu L)\implies A=0$
+- Which gives us a trivial solution
+- **Case 2**: $\lambda=0$
+- $X''=0\implies X=Ax+B$
+- $X'(0)=0=A\implies A=0$
+- $X'(L)=0=A\implies A=0$
+- So we have the arbitrary solution $B$
+- $\lambda_{0}=B, X_{0}(x)=B\equiv 1$ since the coefficient will later get absorbed
+- **Case 3**: $\lambda<0$
+- $r^{2}-\lambda=0,\quad \lambda=-\mu^{2}$
+- $r^{2}+\mu^{2}=0$
+- $r=\pm i\mu$
+- $X=A\sin(\mu x)+B\cos(\mu x)$
+- $X'=A\mu \cos(\mu x)-B\mu \sin(\mu x)$
+- $X'(0)=X'(L)=0$
+- $A=0$
+- $X_{n}(x)=B\cos(\mu_{n}x)$
+- $\lambda n=-\mu_{n}^{2},\quad X_{n}(x)=\cos(\mu_{n}x)$
+- $u_{n}(x,t)=X_{n}(x)\cdot T_{n}(t)=e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\cos\left( \frac{n\pi}{L}x \right)$
+
+- $u(x,t)=A_{0}+\sum_{n=1}^{\infty}A_{n}e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\cos\left( \frac{n\pi x}{L} \right)$
+- $u(x,0)=f(x)=A_{0}+\sum_{n=1}^{\infty}A_{n}\cos\left( \frac{n\pi x}{L} \right)$ this is the [[PDEs#Fourier| Fourier Cosine Series]]
+- When $n=0$, $\int_{-L}^{L}f(x)\cos(0x)dx=\int_{-L}^{L}A_{0}\cos(0x)dx=2A_{0}L$
+- So $A_{0}=\frac{1}{2L}\int_{-L}^{L}f(x)dx$
+- $A_{n}=\frac{1}{L}\int_{L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,n=1,2,3,\dots$
+- $f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}a_{n}\cos\left( \frac{n\pi x}{L} \right)$
+- $a_{n}-\frac{1}{L}\int_{-L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,\quad n=0,1,2,\dots$
+- $u_{t}=u_{xx}, \quad 0<x<1$
+- $u_{x}(0,t)=u_{x}(1,t)=0$
+- $u(x,0)=x$
+$A_{n}=2\int_{0}^{1}x\cos(n\pi x)dx=\frac{2x}{n\pi}\sin(n\pi x)\mid_{-1}^{1}-\frac{2}{n\pi}\int_{0}^{1}\sin(n\pi x)dx=0+\frac{2}{(n\pi)^{2}}[\cos(n\pi)-1]$
+- $a_{n}=\frac{2}{(n\pi)^{2}}\cdot\begin{cases}0, \text{if  is even} \\-2, \text{if n is odd}\end{cases}$
+- $a_{2k+1}=-\frac{4}{((2k+1)\pi)^{2}}$
+- $f(x)=x=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}a_{n}\cos(n\pi x)$
+- $f(x)=\frac{1}{2}-\frac{4}{\pi^{2}}\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}\cos((2k+1)\pi x)$
+- Now we can check
+- $f(0)=0=\frac{1}{2}-\frac{4}{\pi^{2}}\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}$
+- $\frac{\pi^{2}}{8}=\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}$
+### Prove Orthogonality
 - $\cos(A+B)=\cos A\cos B-\sin A\sin B$
 - $\cos(A-B)=\cos A\cos B+\sin A\sin B$
 - Add them together to get $\cos A\cos B=\frac{1}{2}[\cos(A+B)+\cos(A-B)]$
@@ -143,4 +217,3 @@ $\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} 
 - $A=B=\frac{m\pi x}{L}$
 - $\frac{1}{2}\int_{-L}^{L}\left[ \cos\left( \frac{2m\pi x}{L} \right)+1 \right]dx$ 
 - $\int_{-L}^{L}\cos\left( \frac{2m\pi x}{L} \right)dx=\sin\left( \frac{2m\pi x}{L} \right)\mid_{-L}^{L}=0$
-- 
