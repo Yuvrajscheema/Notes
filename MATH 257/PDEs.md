@@ -8,6 +8,25 @@
 	- $\Delta<0$: Elliptic, example $u_{x x}+u_{yy}=f$, **Laplace's equation** if $f=0$, otherwise **Poisson equation**
 - Given the flux density relationship $\frac{ \partial u }{ \partial t }+c\frac{ \partial u }{ \partial x }=0$, we can guess the solution $u(x,t)=e^{at+bx}$
 - Plug this into the equation to get $e^{at+bx}(a+c b)=0$
+### Dirichlet
+- $\lambda_{n}=-\mu_{n}^{2},\quad \mu_{n}=\frac{n\pi}{L}$
+- $X_{n}(x)=\sin\left( \frac{n\pi x}{L} \right)$
+### Neumann
+- $\lambda_{0}=0,\quad\mu_{n}=\frac{n\pi}{L}$
+- $X_{0}=1,\quad X_{n}(x)=\cos\left( \frac{n\pi x}{L} \right)$
+### Periodic
+- $\lambda_{0}=0,\quad \lambda_{n}=-\mu_{n}^{2},\quad \mu=\frac{n\pi}{L}$
+- $X_{n}\in \left\{  1,\cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right)  \right\}$
+### Mixed type A
+- $u_{t}=\alpha^{2}u_{x x}$
+- $u(0,t)=0=u_{x}(0,t)$
+- $\mu_{n}=\frac{2n+1}{2L}\pi$
+- $X_{n}=\sin(\mu_{n}x)$
+### Mixed type B
+- $u_{t}=\alpha^{2}u_{x x }$
+- $\mu_{n}=\frac{(2n+1)\pi}{2L}$
+- $X_{n}=\cos(\mu_{n}x)$
+- $u_{x}(0,t)=0=u(L,t)$
 # Numerical (finite difference method)
 - Approximating derivatives with difference operators 
 - Recall that $f'(x)=\lim_{ x \to 0 } \frac{f(x+\Delta x)-f(x)}{\Delta x}$
@@ -81,13 +100,14 @@ $\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} 
 # Fourier
 - $f(x)=\sum_{n=0}^{\infty}b_{n}[\sin(nx)+a_{n}\cos(nx)]$
 - Laplace Language
-# Seperation of Variables
+# Separation of Variables
 - $u(x,t)=T(t)\cdot X(x)$
 - Systems of ODEs, Linear PDE
 - **Step 1** Assume $u(x,t)=T(t)\cdot X(x)$
 - **Step 2** Plug into the PDE to get ODEs
 - **Step 3** ODE in space gives us the Boundary Value Problem, eigenvalue problem
-- BVP$\mapsto \begin{cases} X''(x)+2X=0 \\X(0)=X(L)=0\end{cases}$
+- BVP$\mapsto \begin{cases} X''(x)+2X=0 \\X(0)=X(L)=0\end{cases}$q
+- Always take your domain as $2L$
 
 ## Heat equation with Dirichlet B.C. (Sine series)
 - $u_{t}=\alpha^{2}u_{x x}\quad 0<x<L$
@@ -206,6 +226,50 @@ $A_{n}=2\int_{0}^{1}x\cos(n\pi x)dx=\frac{2x}{n\pi}\sin(n\pi x)\mid_{-1}^{1}-\fr
 - Now we can check
 - $f(0)=0=\frac{1}{2}-\frac{4}{\pi^{2}}\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}$
 - $\frac{\pi^{2}}{8}=\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}$
+## Heat equation in a Ring
+- Full range Fourier series
+- $u_{t}=\alpha^{2}u_{x x}$
+- $\Delta=\frac{ \partial^{2} }{ \partial x^{2} }+\frac{ \partial^{2} }{ \partial y^{2} }+\dots$
+- $\Delta$ is the Laplace operator
+- $u_{t}=\alpha^{2}\Delta u=a^{2}[u_{x x}+u_{yy}]$
+- $\Delta u=\frac{ \partial^{2}u }{ \partial r^{2} }+\frac{1}{r}\frac{ \partial u }{ \partial r }+\frac{1}{r^{2}}\frac{ \partial^{2}u }{ \partial \theta^{2} }$
+- in 1D $\Delta u=u_{x x}$
+- $x=r\cos \theta,\quad y=r\sin \theta$
+- Heat flow in angular direction
+- $\Delta u=\frac{1}{r^{2}}\frac{ \partial^{2}u }{ \partial \theta^{2} }=\frac{ \partial^{2}u }{ \partial (r\theta)^{2} }$
+- Let $x=r\theta \implies \frac{ \partial^{2}u }{ \partial (r\theta )^{2} }=\frac{ \partial^{2}u }{ \partial x^{2} }$
+- $u_{t}=\alpha^{2}u_{x x}$
+- Let the circumference of the ring be $L$ 
+- $u\left( -\frac{L}{2},t \right)=u\left( \frac{L}{2},t \right)$
+- $u_{x}\left( -\frac{L}{2},t \right)=u_{x}\left( \frac{L}{2},t \right)$
+- For the next little while $L=\frac{L}{2}$ because I'm lazy
+- $u(x,0)=f(x)$
+- $u(x,t)=X(x)\cdot T(t)$
+- (1) $T'=\lambda\alpha^{2}T\implies T(t)=e^{\lambda\alpha^{2}t}$
+- $\begin{cases}X''-\lambda X=0\\X(-L)=X(L)\\X'(-L)=X(L)\end{cases}$
+- Case 1: $\lambda>0\implies$ trivial solution
+- Case 2: $\lambda=0\implies X_{0}(x)=1$
+- Case 2: $\lambda<0\implies r_{1,2}=\pm i\mu$
+- $X(x)=A\cos(\mu x)+B\sin(\mu x)$
+- $X'=-A\mu \sin(\mu x)+B\mu \cos(\mu x)$
+- $X(-L)=A\cos(\mu L)-B\sin(\mu L)$
+- $X(L)=A\cos(\mu L)+B\sin(\mu L)$
+- So then $B=0$ or $\mu L=n\pi \implies \mu_{n}=\frac{n\pi}{L}$
+- $X'(-L)=A\mu \sin(\mu L)++B\mu \cos(\mu L)$
+- $X'(L)=-A\mu \sin(\mu L)+B\mu \cos(\mu L)$
+- So then either $A=0$ or $\mu_{n}=\frac{n\pi}{L}$
+- $\lambda<0,\quad \mu_{n}=\frac{n\pi}{L}$
+- $X_{n}\in\ \left\{   cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right) \right\}$
+- $u_{n}(x,t)=X_{n}(x)\cdot T_{n}(t)=\sum_{n=1}^{\infty}\left[ a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\left( \sin\left( \frac{n\pi x}{L} \right) \right) \right]T_{n}(t)$
+- $u(x,t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} e^{-(\frac{n\pi}{L}\alpha)^{2}t}[a_{n}\cos(\mu_{n}x)+b_{n}\sin(\mu_{n}x)]$
+- $a_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,\quad n=0,1,2,3$
+- $b_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\sin\left( \frac{n\pi x}{L} \right)dx,\quad n=1,2,3$
+- $f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left[ a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\sin\left( \frac{n\pi x}{L} \right) \right]$
+- $L=\frac{1}{2}$
+- $f(x)=x$,assume the function to be periodic
+- $a_{0}=\frac{1}{\frac{1}{2}}\int_{-\frac{1}{2}}^{\frac{1}{2}}xdx=2\int_{0}^{1}xdx=1$
+- $a_{n}=2\int_{-\frac{1}{2}}^\frac{1}{2}x\cos\left( \frac{n\pi x}{L} \right)dx=2\int_{0}^{1}x\cos\left( \frac{n\pi x}{L} \right)dx$
+
 ### Prove Orthogonality
 - $\cos(A+B)=\cos A\cos B-\sin A\sin B$
 - $\cos(A-B)=\cos A\cos B+\sin A\sin B$
