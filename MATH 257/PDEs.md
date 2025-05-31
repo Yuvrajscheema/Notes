@@ -16,7 +16,7 @@
 - $X_{0}=1,\quad X_{n}(x)=\cos\left( \frac{n\pi x}{L} \right)$
 ### Periodic
 - $\lambda_{0}=0,\quad \lambda_{n}=-\mu_{n}^{2},\quad \mu=\frac{n\pi}{L}$
-- $X_{n}\in \left\{  1,\cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right)  \right\}$
+- $X_{n}\in \{  1,\cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right)  \}$
 ### Mixed type A
 - $u_{t}=\alpha^{2}u_{x x}$
 - $u(0,t)=0=u_{x}(0,t)$
