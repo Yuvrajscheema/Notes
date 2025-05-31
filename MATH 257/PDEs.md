@@ -259,7 +259,7 @@ $A_{n}=2\int_{0}^{1}x\cos(n\pi x)dx=\frac{2x}{n\pi}\sin(n\pi x)\mid_{-1}^{1}-\fr
 - $X'(L)=-A\mu \sin(\mu L)+B\mu \cos(\mu L)$
 - So then either $A=0$ or $\mu_{n}=\frac{n\pi}{L}$
 - $\lambda<0,\quad \mu_{n}=\frac{n\pi}{L}$
-- $X_{n}\in\ \left\{   cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right) \right\}$
+- $X_{n}\in \{   cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right) \}$
 - $u_{n}(x,t)=X_{n}(x)\cdot T_{n}(t)=\sum_{n=1}^{\infty}\left[ a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\left( \sin\left( \frac{n\pi x}{L} \right) \right) \right]T_{n}(t)$
 - $u(x,t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} e^{-(\frac{n\pi}{L}\alpha)^{2}t}[a_{n}\cos(\mu_{n}x)+b_{n}\sin(\mu_{n}x)]$
 - $a_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,\quad n=0,1,2,3$
