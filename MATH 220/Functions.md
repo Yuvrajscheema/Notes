@@ -14,7 +14,7 @@ For non empty sets $A$ and $B$, a **function**  $f$ from $A$ to $B$ written $f:A
  - *Image* and *pre-image*, Let $f: A \rightarrow B$  be a function, and let $C \subseteq A$ and let $D\subseteq B$ 
 	 - The set $f(C) = \{ f(x) \mid x \in C \}$ is the **image** of $C$ in $B$
 	 - The set $f^{-1}(D) = \{ x \in A \mid f(x)\in D \}$ is the **preimage** of $D$ in $A$
-	 - ==$f^{-1} $ does not necessarily represent the inverse function==
+	 - $f^{-1}$ does not necessarily represent the inverse function
 >[!example] 
 >$A = \{ a,b,c,d,e \}, B = \{ 1,2,3,4,5 \}$
 >$a \rightarrow 1, b \rightarrow 1, c \rightarrow 4, d,e \rightarrow 5$
