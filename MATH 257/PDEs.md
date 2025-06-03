@@ -35,8 +35,8 @@
 - $f(x-\Delta x)=f(x)-\Delta xf'(x)+\frac{\Delta x^{2}}{2}f''(x)+\dots$
 - If we subtract the two equations we get $f(x+\Delta x)-f(x-\Delta x)=2\Delta xf'(x)+\frac{2\Delta x^{3}}{3!}+\dots$
 - So we can get the approximate error of the derivative, the following is called a central difference scheme
-- $f'(x)=\frac{f(x+\Delta x)-f(x)}{\Delta x}+0(\Delta x)^{2}$, this is second order accurate
-- $f'(x)-\frac{f(x+\Delta x)-f(x)}{\Delta x}-0\Delta x$, this is a forward scheme and is first order accurate
+- $f'(x)=\frac{f(x+\Delta x)-f(x-\Delta x)}{\Delta x}+0(\Delta x)^{2}$, this is second order accurate
+- $f'(x)-\frac{f(x+\Delta x)-f(x-\Delta x)}{\Delta x}-0\Delta x$, this is a forward scheme and is first order accurate
 - Now we can sum up the two equations and make $f''$ the subject
 - $f(x+\Delta x)+f(x-\Delta x)=2f(x)+\frac{2\Delta x^{2}}{2}f''(x)+\dots$
 - Then we get $f''(x)=\frac{f(x+\Delta x)-2f(x)+f(x-\Delta x)}{\Delta x^{2}}+0(\Delta x)^{2}$, central difference scheme for $f''$
@@ -106,7 +106,7 @@ $\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} 
 - **Step 1** Assume $u(x,t)=T(t)\cdot X(x)$
 - **Step 2** Plug into the PDE to get ODEs
 - **Step 3** ODE in space gives us the Boundary Value Problem, eigenvalue problem
-- BVP$\mapsto \begin{cases} X''(x)+2X=0 \\X(0)=X(L)=0\end{cases}$q
+- BVP$\mapsto \begin{cases} X''(x)+2X=0 \\X(0)=X(L)=0\end{cases}$
 - Always take your domain as $2L$
 
 ## Heat equation with Dirichlet B.C. (Sine series)
