@@ -31,7 +31,7 @@
 - Approximating derivatives with difference operators 
 - Recall that $f'(x)=\lim_{ x \to 0 } \frac{f(x+\Delta x)-f(x)}{\Delta x}$
 - Then we can approximate the derivative to $f'(x)\approx \frac{f(x+\Delta x)-f(x)}{\Delta x}$ with a sufficiently small $\Delta x$
-- Using the Taylor series we can say that $f(x+\Delta x)=f(x)+\Delta f'(x)+\frac{\Delta x^{2}}{2}f''(x)+\dots$
+- Using the Taylor series we can say that $f(x+\Delta x)=f(x)+\Delta xf'(x)+\frac{\Delta x^{2}}{2}f''(x)+\dots$
 - $f(x-\Delta x)=f(x)-\Delta xf'(x)+\frac{\Delta x^{2}}{2}f''(x)+\dots$
 - If we subtract the two equations we get $f(x+\Delta x)-f(x-\Delta x)=2\Delta xf'(x)+\frac{2\Delta x^{3}}{3!}+\dots$
 - So we can get the approximate error of the derivative, the following is called a central difference scheme
