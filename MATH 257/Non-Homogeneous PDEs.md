@@ -82,4 +82,62 @@
 - $v_{x}(0,t)=v_{x}(1,t)=0$
 - $v(x,0)=f(x)-u_{\infty}(x,0)$
 - This doesn't work for $\ln t$ lmao we need to change it to something like $\ln(t+1)$
+## Example 2
+- $u_{t}=16u_{xx}+\cos\left( \frac{7\pi x}{2} \right)\quad 0<x<2$
+- $u_{x}(0,t)=1=u_{x}(2,t)$
+- $u(x,0)=x^{2}-4$
+- $u(x,t)=v(x,t)+u_{p}(x,t)$
+- $u_{p}(x,t)=\frac{A(t)}{2}x^{2}+B(t)x+C(t)$
+- $\frac{ \partial u_{p} }{ \partial x }=A(t)x+B(t)$
+- $u_{p_{x}}(0,t)=B=1$
+- $u_{p_{x}}(2,t)=1=2A+1\implies A=0$
+- $u_{p}(x,t)=x$
+-  $u(x,t)=v(x,t)+x$, now plug these into the pde
+- $v_{t}=16v_{xx}+\cos\left( \frac{7\pi x}{2} \right)$
+- $v_{x}(0,t)=v_{x}(2,t)=0$
+- $u(x,0)=v(x,0)+u_{p}(x,0)\implies v(x,0)=x^{2}-4-x$
+- Let $v(x,t)=\frac{V_{0}}{2}+\sum_{n=1}^{\infty}V_{n}\cos\left( \frac{n\pi x}{2} \right)$
+- For a neumann $\lambda_{n}\in\begin{cases}0,\left( \frac{n\pi}{L} \right)^{2}\end{cases}$
+- $\cos\left( \frac{7n\pi}{2} \right)=\frac{S_{0}}{2}+\sum S_{n}(t)\cos\left( \frac{n\pi x}{2} \right)$
+- $S_{n}=\frac{2}{L}\int_{0}^{L}f(x)\cos\left( \frac{n\pi x}{2} \right)$
+- $S_{n}=\delta_{n 7}$
+- $v_{t}=\frac{V_{0}}{2}+\sum_{n=1}^{\infty}V_{n}'\cos\left( \frac{7\pi x}{2} \right)$
+- $v_{xx}=\sum_{n=1}^{\infty}-\left( \frac{n\pi}{2} \right)^{2}V_{n}\cos\left( \frac{n\pi x}{2} \right)$
+- $v_{t}-16v_{x x}-\cos\left( \frac{7\pi x}{2} \right)=0$
+- $\left[ \frac{V_{t_{0}}}{2} -16[0]-0\right]+\sum_{n=1}^{\infty}\left[ V_{n}'+16\left( \frac{n\pi}{2} \right)^{2}V_{n}=\delta_{n_{7}} \right]\cos\left( \frac{n\pi x}{2} \right)$
+- $\frac{\frac{ \partial V_{0} }{ \partial t }}{2}=0$ (1)
+- $V_{n}+\left( \frac{4n\pi}{2} \right)^{2}V_{n}-\delta_{n_{7}}=0$ (2)
+- From (1) we have that $V_{0}=C_{0}$
+- From (2) we have $V_{x_{n}}+(2\pi n)^{2}V_{n}=\delta_{n_{7}}$
+- Here we must use integrating factor, $r=e^{\int (2n\pi)^{2}dt}=e^{(2n\pi)^{2}t}$
+- $V_{n}=e^{-(2n\pi)^{2}t}\left[ \int_{0}^{t}e^{(2n\pi)^{2}t}\delta_{n 7}dz+C \right]$
+- $V_{n}=e^{-(2n\pi)^{2}t}\left[ \frac{1}{(2n\pi)^{2}}e^{(2n\pi)^{2}t}\delta_{n 7 }+C \right]$
+- $V_{n}(t)=\frac{1}{(2n\pi)^{2}}S_{n 7}+Ce^{-(2n\pi)^{2}t}$
+- $v(x,t)=\frac{c_{0}}{2}+\sum_{n=1}^{\infty} \left[ \frac{1}{(2n\pi)^{2}}\delta_{n 7}+C_{n}e^{-(2n\pi)^{2}t} \right]\cos\left( \frac{n\pi x}{2} \right)$
+- $v(x,0)=\frac{c_{0}}{2}+\sum_{n=1}^{\infty}\left[ \frac{\delta_{n 7}}{(2n\pi)^{2}}+C_{n} \right]\cos\left( \frac{n\pi x}{2} \right)$
+- $a_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx, \quad L=2$
+- $c_{n}=a_{n}-\frac{\delta_{n 7}}{(2n\pi)^{2}}$
+## Example 3
+- $u_{t}=u_{x x}+e^{-t}\sin(x),\quad 0<x< \frac{\pi}{2}$
+- $u_{0}(0,t)=0,\quad u_{x}\left( \frac{\pi}{2},t \right)=e^{-t}$
+- $u(x,0)=x$
+- We have mixed boundary conditions
+- $\lambda_{n}-\mu_{n}^{2}\implies \mu_{n}=2n+1$
+- $X_{n}(x)=\sin((2n+1)x)$
+- $u_{p}(x,t)=A(t)x+B(t)$
+- $u_{p}(0,t)=B(t)=0$
+- $u_{p_{x}}(x,t)=A(t)\implies A(t)=e^{-t}$
+- $v_{t}=e^{-t}x=v_{xx}+0+e^{-t}\sin(x)$
+- $v(t)=v_{x x}+e^{-t}[x+\sin x]$
+- $u(x,0)=v(x,0)+u_{p}(x,0)$
+- $x=v(x,0)+x \implies v(x,0)=0$
+- $v(x,t)=\sum_{n=0}^{\infty}V_{n}(t)+\sin((2n+1)x)$
+- $e^{-t}[x+\sin x]=\sum_{n=0}^{\infty}S_{n}(t)\sin((2n+1)x)$
+- So we know that $S_{n}(t)=\frac{2}{\frac{\pi}{2}}\int_{0}^{\pi/2}[x+\sin x]\sin((2n+1)x)dx$
+- $\int_{0}^{\pi/2} x\sin[(2n+1)x] \, dx$
+- $dv=\sin[(2n+1)x]$
+- $v=-\frac{1}{2n+1}\cos[(2n+1)x]$
+- $u=x,\quad du=1$
+$\int_{0}^{\pi/2} x\sin[(2n+1)x] \, dx=-\frac{x}{2n+1}\cos((2n+1)x)\mid_{0}^\frac{\pi}{2}+\frac{1}{2n+1}+\frac{1}{2n+1}\int_{0}^{\pi/2}\cos((2n+1)x)  \, dx$
+- This gives us $0+\frac{(-1)^{n}}{(2n+1)^{2}}+\frac{\pi}{4}$
 - 
