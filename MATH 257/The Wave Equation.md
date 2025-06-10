@@ -118,3 +118,32 @@ $b_{n}(t)=A_{n}\cos(n\pi t)+B_{n}\sin(n\pi t)-\frac{2(-1)^{n}t}{(n\pi)^{3}}$
 From the initial conditions we get $b_{n}(0)=0=A_{n}$ and $b'_{n}(0)=\frac{2(1-(-1)^{n})}{n\pi}=n\pi B_{n}-\frac{2(-1)^{n}}{(n\pi)^{3}}$
 So the complete solution is given by
 $u(x,t)=\sum_{n=1}^{\infty}\left[ \left(  \frac{2(-1)^{n}}{(n\pi)^{4}}+\frac{2(1-(-1)^{n})}{(n\pi)^{2}} \right)\sin(n\pi t)-\frac{2(-1)^{n}t}{(n\pi)^{3}} \right]\sin(n\pi x)$
+
+# d'Almberts Solution
+Only applies to homogeneous wave equation
+$u_{tt}=c^{2}u_{x x}\quad-\infty<x<\infty$
+Boundary conditions are not defined
+$u(x,0)=f(x)\quad u_{t}(x,0)=g(x)$
+$\xi=x+ct\quad \eta =x-ct$
+$\frac{ \partial u }{ \partial x }=\frac{ \partial u }{ \partial \xi },\frac{ \partial u }{ \partial \eta }$
+$u_{tt}-c^{2}u_{x x}=0$
+$u_{\xi \zeta}=0$
+$u(\xi,\eta)=F(\xi)+G(\eta)$
+$u(x,t)=F(x+ct)+G(x-ct)$
+$u(x,0)=f(x)=F(x)+G(x)$ **(1)**
+$u_{t}(x,t)=cF'(x+ct)-cG'(x-ct)$
+$u_{t}(x,0)=c[F'(x)-G'(x)]$ **(2)**
+$\frac{1}{c}\int_{0}^{x} g(s) \, ds=F(x)-G(x) -[F(0)-G(0)]$ **(3)**
+Add **(1)** and **(3)** together
+$\frac{f(x)}{2}+\frac{1}{2c}\int_{0}^{x} g(s) \, ds=F(x)-C$
+**(1)-(3)**
+$\frac{f(x)}{2}-\frac{1}{2c}\int_{0}^{x} g(x) \, ds=G(x)+C$
+$F(x+ct)=\frac{f(x+ct)}{2}+\frac{1}{2c}\int_{0}^{x+ct} g(s) \, ds$
+$G(x-ct)=\frac{f(x-ct)}{2}-\frac{1}{2c}\int_{0}^{x-ct} g(s) \, ds$
+$u(x,t)=\frac{1}{2}[f(x+ct)+f(x-ct)]+\frac{1}{2c}\int_{x-ct}^{x+ct}g(s)  \, ds$
+
+## Example
+$u_{tt}=u_{x x}$
+$u(x,0)=\sin x\quad u_{t}(x,0)=x^{2}$
+$u(x,t)=\frac{1}{2}[\sin(x+t)+\sin(x-t)]+\frac{1}{2}\int_{x-t}^{x+t}s^{2}ds$
+
