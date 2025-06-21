@@ -1,0 +1,3 @@
+- Resistor of resistance $R$ $\longrightarrow$ impedance of $R$
+- Capacitor of capacitance $C\longrightarrow$ impedance of $\frac{1}{sC}$ constant voltage in the same direction as capacitor $\frac{v_{c}(0)}{s}$ basically represents the voltage drop you would get across the capacitor at $t=0$
+- Inductor of inductance $L\longrightarrow$ impedance of $sL$ constant voltage opposing the voltage drop $Li_{L}(0)$, basically means in the same direction as current flow

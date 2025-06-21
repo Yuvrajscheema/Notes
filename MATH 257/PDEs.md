@@ -1,0 +1,283 @@
+# Types of PDEs
+- The order of a PDE is the value of the highest order partial derivative occurring in the equation
+- The degree is the power of the highest derivative
+- $Au_{xx}+Bu_{xy}+Cu_{yy}+Du_{x}+Eu_{y}+Fu=G$ is a second order liner PDE, the PDE is said to be homogeneous if $G=0$ 
+- Analogous to characterizing quadratic equations $AX^{2}+BXY+CY^{2}+DX+EY=k$ as hyperbolic, parabolic or elliptic, determined by the sign of $\Delta=B^{2}-4AC$
+	- $\Delta>0$: Hyperbolic, example $u_{tt}=c^{2}u_{xx}$  **wave equation
+	- $\Delta=0$: Parabolic, example $u_{t}=u_{x x}$,  **heat/diffusion equation
+	- $\Delta<0$: Elliptic, example $u_{x x}+u_{yy}=f$, **Laplace's equation** if $f=0$, otherwise **Poisson equation**
+- Given the flux density relationship $\frac{ \partial u }{ \partial t }+c\frac{ \partial u }{ \partial x }=0$, we can guess the solution $u(x,t)=e^{at+bx}$
+- Plug this into the equation to get $e^{at+bx}(a+c b)=0$
+### Dirichlet
+- $\lambda_{n}=-\mu_{n}^{2},\quad \mu_{n}=\frac{n\pi}{L}$
+- $X_{n}(x)=\sin\left( \frac{n\pi x}{L} \right)$
+### Neumann
+- $\lambda_{0}=0,\quad\mu_{n}=\frac{n\pi}{L}$
+- $X_{0}=1,\quad X_{n}(x)=\cos\left( \frac{n\pi x}{L} \right)$
+### Periodic
+- $\lambda_{0}=0,\quad \lambda_{n}=-\mu_{n}^{2},\quad \mu=\frac{n\pi}{L}$
+- $X_{n}\in \{  1,\cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right)  \}$
+### Mixed type A
+- $u_{t}=\alpha^{2}u_{x x}$
+- $u(0,t)=0=u_{x}(L,t)$
+- $\mu_{n}=\frac{2n+1}{2L}\pi$
+- $X_{n}=\sin(\mu_{n}x)$
+### Mixed type B
+- $u_{t}=\alpha^{2}u_{x x }$
+- $\mu_{n}=\frac{(2n+1)\pi}{2L}$
+- $X_{n}=\cos(\mu_{n}x)$
+- $u_{x}(0,t)=0=u(L,t)$
+# Numerical (finite difference method)
+- Approximating derivatives with difference operators 
+- Recall that $f'(x)=\lim_{ x \to 0 } \frac{f(x+\Delta x)-f(x)}{\Delta x}$
+- Then we can approximate the derivative to $f'(x)\approx \frac{f(x+\Delta x)-f(x)}{\Delta x}$ with a sufficiently small $\Delta x$
+- Using the Taylor series we can say that $f(x+\Delta x)=f(x)+\Delta xf'(x)+\frac{\Delta x^{2}}{2}f''(x)+\dots$
+- $f(x-\Delta x)=f(x)-\Delta xf'(x)+\frac{\Delta x^{2}}{2}f''(x)+\dots$
+- If we subtract the two equations we get $f(x+\Delta x)-f(x-\Delta x)=2\Delta xf'(x)+\frac{2\Delta x^{3}}{3!}+\dots$
+- So we can get the approximate error of the derivative, the following is called a central difference scheme
+- $f'(x)=\frac{f(x+\Delta x)-f(x-\Delta x)}{\Delta x}+0(\Delta x)^{2}$, this is second order accurate
+- $f'(x)-\frac{f(x+\Delta x)-f(x)}{\Delta x}-0\Delta x$, this is a forward scheme and is first order accurate
+- Now we can sum up the two equations and make $f''$ the subject
+- $f(x+\Delta x)+f(x-\Delta x)=2f(x)+\frac{2\Delta x^{2}}{2}f''(x)+\dots$
+- Then we get $f''(x)=\frac{f(x+\Delta x)-2f(x)+f(x-\Delta x)}{\Delta x^{2}}+0(\Delta x)^{2}$, central difference scheme for $f''$
+# $1$D Heat Equation
+- The heat equation is given by $u_{t}=\alpha u_{x x}$ [[PDEs#Types of PDEs|types of pdes]]
+- We need the boundary conditions for the $x$ domain and we need the initial conditions
+- For example the Dirichlet $u(0,t)=A, u(h,t)=B$
+- The Neumann boundary conditions $u_{x}(0,t)=A, u_{x}(L,t)=B$
+- The Robin type conditions $u(0,t)+u_{x}(0,t)=A$
+- Now we will solve an example
+- $u_{t}=a^{2}u_{x x}$
+- Boundary Condition: $u(0,t)=0, \quad u(L,t)=0, \quad u(x,0)=f(x)$
+- **Step 1** Now it is time to discretize, given the domain of $x$ ranging from $0\to L$
+- We split it into $n$ components where $x_{0}=0$ and $L=x_{n}$
+- Now we do the same with $t$ splitting into $k$ components
+- So $x_{n+1}-x_{n}=\Delta x$ and $t_{k+1}-t_{k}=\Delta k$
+- **Step 2** Discretize the PDE
+- Approximate $u_{t}$ with first forward difference and $u_{x x}$ with central difference scheme
+- $u_{n}^{k}=u(x_{n},t_{k})$
+- So now we have $\frac{u_{n}^{k+1}-u_{n}^{k}}{\Delta t}=\alpha^{2}\left[ \frac{u_{n+1}^{k}-2u_{n}^{k}+u_{n-1}^{k}}{\Delta x^{2}} \right]$
+- Rearrange the equation to get $u_{n}^{k+1}=(1-2r)u_{n}^{k}+ru_{n+1}^{k}+ru_{n-1}^{k}$ where $r=\frac{\alpha^{2}\Delta t}{\Delta x^{2}}$
+$\begin{bmatrix}u_{0} \\ u_{1} \\.\\.\\.\\u_{N}\end{bmatrix}^{k+1}=\begin{bmatrix}r & 1-2r & r &0&0&\dots \\ 0 &r & 1-2r  &r & 0 & \dots\\ . &.&.&.&. \\ .&. &.&.&.\\.&.&.&.&.\\.&.&.&.&.\end{bmatrix}\begin{bmatrix}u_{0}\\.\\.\\.\\.\\u_{N}\end{bmatrix}^{k}$
+- $u(0,t)=0\implies u_{0}^{k}=0$
+- Therefore by recursive protocol $u_{0}^{k+1}=u_{0}^{k}=0$
+- Now if we have the Neumann boundary condition, $\frac{ \partial u(0,t) }{ \partial x }=q_{0}, \quad \frac{ \partial u(L,t) }{ \partial x }=p_{0}$
+- We know that $u_{0}^{k+1}=ru_{1}^{k}+(1-2r)u^{k}_{0}+ru_{-1}^{k}$
+- This creates a ghost node at $-1$, we will use the central difference scheme to amend this
+- $u_{x}(0,t)=\frac{u_{1}^{k}-u_{-1}^{k}}{2\Delta x}$
+- $u_{-1}^{k}=-2\Delta xq_{0}+u_{1}^{k}$
+- So then we have $u_{0}^{k+1}=ru_{1}^{k}+(1-2r)u_{0}^{k}+r[u_{1}^{k}-2\Delta xq_{0}]$
+- Now for the **upper** boundary, $N+1$ is the ghost node
+- $u_{N}^{k+1}=ru_{N+1}^{k}+(1-2r)u_{N}^{k}+ru_{N-1}^{k}$
+- We replace the term using the equation $u_{x}(L,t)=\frac{u_{N+1}^{k}-u_{N-1}^{k}}{2\Delta x}$, as we did for the lower ghost node
+# Wave equation
+- $u_{tt}=\alpha^{2}u_{x x}$  [[PDEs#Types of PDEs|types of pdes]]
+- B.C.  $u(0,t)=u(L,t)=0$
+- I.C.  $u(x,0)=f(x); \quad u_{t}(x,0)=g(x)$
+- Use central difference scheme for time and space
+- $u_{n}^{k}=u(x_{n},t_{k})$
+- $\frac{u_{n}^{k+1}-2u_{n}^{k}+u_{n}^{k-1}}{\Delta t^{2}}=\frac{\alpha^{2}(u^{k}_{n+1}-2u_{n}^{k}+u_{n-1}^{k})}{\Delta x^{2}}$
+- $c=\frac{\alpha \Delta t}{\Delta x}$
+- Now we can rearrange the equation to get:      $u_{n}^{k+1}=c^{2}u_{n+1}^{k}+2(1-c^{2})u_{n}^{k}+c^{2}u_{n-1}^{k}-u_{n}^{k-1}$
+- What does this look like in matrix form?
+$\vec{u}^{k}=\begin{bmatrix}c^{2}&2(1-c^{2})&c^{2} & 0 & 0 & \dots \\ 0 & c^{2} & 2(1-c^{2}) & 0 & 0 & \dots\\. & . & . & . & . & \dots\end{bmatrix}\vec{u}^{k}+\begin{bmatrix}-1 & 0 & 0 & \dots\\0 & -1 & 0 & \dots\\. & . & . & \dots\end{bmatrix}\vec{u}^{k-1}$
+- $u_{n}^{1}=c^{2}u_{n+1}^{0}+2(1-c^{2})u_{n}^{0}+c^{2}u_{n-1}^{0}-u_{n}^{-1}$
+- $u_{n}^{-1}$ is a ghost node!, we must discretize
+- $\frac{{u_{n}^{1}-u_{n}^{-1}}}{2\Delta t}=g(x)\implies\quad u_{n}^{-1}=u_{n}^{1}-2\Delta tg(x)$
+# Laplace Equation
+- $u_{x x}+u_{yy}=0$ [[PDEs#Types of PDEs|types of pdes]]
+- $u(0,y)=f_{1}(y);\quad u(L,y)=f_{2}(y)$
+- $u(x,0)=g_{1}(x);\quad u(x,L)=g_{2}(x)$
+- $\frac{u_{m+1,n}-2u_{m,n}+u_{m-1,n}}{\Delta x^{2}}+\frac{{u_{m,n+1}-2u_{m,n}+u_{m,n-1}}}{\Delta y^{2}}=0$
+- $2[\Delta x^{2},u_{m,n}+\Delta y^{2}u_{m,n}]=\Delta y^{2}(u_{m+1,n}+u_{m-1,n})+\Delta x^{2}(u_{m,n+1}+u_{m,n-1})$
+- $u_{m,n}=\frac{1}{2(\Delta x^{2}+\Delta y^{2})}$
+- Now what happens if we let $\Delta x=\Delta y$?
+- $u_{m,n}=\frac{1}{4}(u_{m+1,n}+u_{m-1,n}+u_{m,n+1}+u_{m,n-1})$
+- It is the average of the neighbouring nodes!
+- **Jacobian Iteration Scheme**
+- $u_{m,n}^{()}\to u_{m,n}^{(1)}\to\dots\to u_{m,n}^{(k)}$
+- $u_{m,n}^{(k+1)}=\frac{1}{4}[u_{m+1,n}^{(k)}+u_{m-1,n}^{(k)}+u_{m,n+1}^{(k)}+u_{m,n-1}^{(k)}]$
+# Fourier
+- $f(x)=\sum_{n=0}^{\infty}b_{n}[\sin(nx)+a_{n}\cos(nx)]$
+- Laplace Language
+# Separation of Variables
+- $u(x,t)=T(t)\cdot X(x)$
+- Systems of ODEs, Linear PDE
+- **Step 1** Assume $u(x,t)=T(t)\cdot X(x)$
+- **Step 2** Plug into the PDE to get ODEs
+- **Step 3** ODE in space gives us the Boundary Value Problem, eigenvalue problem
+- BVP$\mapsto \begin{cases} X''(x)+2X=0 \\X(0)=X(L)=0\end{cases}$
+- Always take your domain as $2L$
+
+## Heat equation with Dirichlet B.C. (Sine series)
+- $u_{t}=\alpha^{2}u_{x x}\quad 0<x<L$
+- B.C. $u(0,t)=u(L,t)=0$
+- I.C. $u(x,0)=f(x)$
+- **1** Let $u(x,t)=X(x)\cdot T(t)$
+- $u_{t}=X\cdot T'$
+- $u_{xx}=X''\cdot T$
+- **2** plug these back into the equation
+- $XT'=\alpha^{2}X''T$
+- $\frac{T'}{T}=\frac{\alpha^{2}X''}{X}$
+- This is only possible if $\frac{T'}{\alpha^{2}T}=\frac{X''}{X}=\lambda$
+- So now we have the two equations $T'-\lambda \alpha^{2}T=0$
+- $X''-\lambda X=0$
+- $T(t)=-e^{\alpha^{2}\lambda t}$
+- Now we have an eigenvalue problem
+- $\begin{cases}X''-\lambda X=0 \\ X(0)=X(L)\end{cases}$
+- let $X=e^{rx}$
+- $r^{2}=\lambda=0\implies$ we can get different solutions
+- **Case 1**: $\lambda>0$,    let $\lambda=\mu^{2}$
+- $r^{2}-\mu^{2}=0\implies r=\pm \mu$
+- So then $y(x)=Ae^{\mu x}+Be^{-\mu x}\to y(x)=A\cosh(\mu x)+B\sinh(\mu x)$
+- Now lets check the boundary conditions $y(x)=a\sin(x)+b\cos(x)$
+- $y(0)=0=b$
+- Going down this road only gives a trivial solution which is not what we want
+- More found in the notes on canvas
+- **Case 2**:  $\lambda=0$
+- $X''=0\implies X(x)=Ax+B$
+- $X(0)=B=0, \quad X(L)=AL=0\implies A=0$ so we have another trivial solution
+- **Case 3** $\lambda<0$
+- $r^{2}+\mu^{2}=0\implies R=\pm i \mu$
+- $X(x)=A\cos(\mu x)+B\sin(\mu x)$
+- $X(0)=A=0$
+- $X(L)=B\sin(\mu L)=0\implies \sin(\mu L)=0$, this is only possible if $\mu L=n\pi$
+- $\mu_{n}=\frac{n\pi}{L}$,the eigenvalues are $-\mu_{n}^{2}=-\left( \frac{n\pi}{L} \right)^{2}$
+- $X_{n}(x)=B_{n}\sin(\mu_{n}x), n=1,2,3,\dots$
+- $U_{n}(x,t)=X_{n}(x)T(t)=e^{-(\frac{n\pi}{L}\alpha)^{2}t}\sin(\mu_{n}x)$
+- $u(x,t)=\sum_{n=1}^{\infty}b_{n}U_{n}(x,t)=\sum_{n=1}^{\infty}b_{n}e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\sin\left( \frac{n\pi}{L}x \right)$
+- $u(x,0)=f(x)=\sum_{n=1}^{\infty}b_{n}\sin\left( \frac{n\pi}{L}x \right)$
+- So the series is the [[PDEs#Fourier|Fourier]] sine series of $f(x)$
+- To find $b_{n}$, we employ the orthogonal property of $\sin$ and $\cos$
+- $\int_{-L}^{L}\sin\left( \frac{n\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx=\begin{cases}0, \quad m\neq n \\ L, \quad m = n &  & \end{cases}$
+- $\int_{-L}^{L}\cos\left( \frac{m\pi x}{L} \right)\cos\left( \frac{n\pi x}{L} \right)dx=\begin{cases}0, \quad m\neq n \\ L, \quad m = n \neq 0 \\2L, \quad m=n=0 \end{cases}$
+- $\int_{-L}^{L}\sin\left( \frac{m\pi x}{L} \right)\cos\left( \frac{n\pi x}{L} \right)dx=0$
+- Now we are going to multiply $f(x)$ by $\sin\left( \frac{m\pi x}{L} \right)$
+- This gives us the following
+- $\int_{-L}^{L}f(x)\sin\left( \frac{m\pi x}{L} \right)dx=\int_{-L}^{L}\sum_{n=1}^{\infty}b_{n}\sin\left( \frac{n\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx$
+- $\int_{-L}^{L}b_{1}\sin\left( \frac{\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)+\int_{-L}^{L}b_{2}\sin\left( \frac{2\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)+\dots$
+- There will be some index where we get $\int_{-L}^{L}b_{m}\sin\left( \frac{m\pi x}{L} \right)\sin\left( \frac{m\pi x}{L} \right)dx$ which is the only term that is not equal to zero
+- So now we have $\int_{-L}^{L}f(x)\sin\left( \frac{m\pi x}{L} \right)dx=b_{m}L$
+- $b_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\sin\left( \frac{n\pi x}{L} \right)dx$
+- Now lets look at the boundary and initial conditions again
+- B.C: $u(0,t)=u(1,t)=0$
+- I.C.: $u(x,0)=x$
+- $u(x,t)=\sum_{n=1}^{\infty}b_{n}e^{-(n\pi)^{2}t}\sin(n\pi x)$
+- $b_{n}=\int_{-1}^{1}x\sin(n\pi x)dx$
+- Time to integrate by parts, $u=x \implies du=1$, $dv=\sin(n\pi x)\implies v=-\frac{1}{n\pi}\cos(n\pi x)$
+- $b_{n}=\left[ -\frac{x}{n\pi}\cos(n\pi x) \right]\mid_{-1}^{1}+\frac{1}{n\pi}\int \cos(n\pi x)dx$
+- $b_{n}=-\frac{1}{n\pi}[\cos(n\pi)+\cos(n\pi)]+0=-\frac{2}{n\pi}\cos(n\pi), n=1,2,3,..$
+- $\cos(n\pi)=(-1)^{n}, \implies b_{n}=\frac{2}{n\pi}(-1)^{n+1}, n=1,2,3,\dots$
+- So now we have $f(x)=x=\sum_{n=1}^{\infty} \frac{2}{n\pi}(-1)^{n+1}\sin(n\pi x)$
+- $\frac{\pi}{4}=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\dots$
+- Lets look at $f\left( \frac{1}{2} \right)$, we want an $x$ value that doesn't make the values disappear
+- $f\left( \frac{1}{2} \right)=\frac{1}{2}=\frac{2}{\pi}\left[ 1 - \frac{1}{3}+\frac{1}{5}+\dots \right]$
+- $\frac{1}{2}=\frac{2}{\pi}\cdot \frac{\pi}{4}=\frac{1}{2} \checkmark$
+## Neumann B.C. (Fourier Cosine Series)
+- $u_{t}=\alpha u_{x x}$
+- $u_{x}(0,t)=0,u_{x}(L, t)=0, u(x,0)=0$
+- $u_{t}=XT',\quad u_{xx}=X''T$
+- $XT'=\alpha^{2}X''T\implies \frac{T'}{\alpha^{2}T}=\frac{X''}{X}=\lambda$
+- $T'-\lambda\alpha^{2}T=0,\quad \quad X''-\lambda X=0$
+- $X'(0)=X'(L)=0$ these two lines give us the eigenvalue problem
+- $T=Ce^{\lambda\alpha^{2}t}$
+- Let $X(x)=e^{rx}$
+- Then plugging that in gives us the equation $r^{2}-\lambda=0$
+- **Case 1**: $\lambda>0$, let $\lambda=\mu^{2}$
+- $r^{2}-\mu^{2}=0\implies r=\pm \mu$
+- $X(x)=A\cosh(\mu x)+B\sinh(\mu x)$
+- $X'(x)=A\mu\sinh(\mu x)+B\mu\cosh(\mu x)$
+- $X'(0)=0=B\mu \implies B=0$
+- $X'(L)=0=A\mu \sinh(\mu L)\implies A=0$
+- Which gives us a trivial solution
+- **Case 2**: $\lambda=0$
+- $X''=0\implies X=Ax+B$
+- $X'(0)=0=A\implies A=0$
+- $X'(L)=0=A\implies A=0$
+- So we have the arbitrary solution $B$
+- $\lambda_{0}=B, X_{0}(x)=B\equiv 1$ since the coefficient will later get absorbed
+- **Case 3**: $\lambda<0$
+- $r^{2}-\lambda=0,\quad \lambda=-\mu^{2}$
+- $r^{2}+\mu^{2}=0$
+- $r=\pm i\mu$
+- $X=A\sin(\mu x)+B\cos(\mu x)$
+- $X'=A\mu \cos(\mu x)-B\mu \sin(\mu x)$
+- $X'(0)=X'(L)=0$
+- $A=0$
+- $X_{n}(x)=B\cos(\mu_{n}x)$
+- $\lambda n=-\mu_{n}^{2},\quad X_{n}(x)=\cos(\mu_{n}x)$
+- $u_{n}(x,t)=X_{n}(x)\cdot T_{n}(t)=e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\cos\left( \frac{n\pi}{L}x \right)$
+
+- $u(x,t)=A_{0}+\sum_{n=1}^{\infty}A_{n}e^{-\left( \frac{n\pi}{L}\alpha \right)^{2}t}\cos\left( \frac{n\pi x}{L} \right)$
+- $u(x,0)=f(x)=A_{0}+\sum_{n=1}^{\infty}A_{n}\cos\left( \frac{n\pi x}{L} \right)$ this is the [[PDEs#Fourier| Fourier Cosine Series]]
+- When $n=0$, $\int_{-L}^{L}f(x)\cos(0x)dx=\int_{-L}^{L}A_{0}\cos(0x)dx=2A_{0}L$
+- So $A_{0}=\frac{1}{2L}\int_{-L}^{L}f(x)dx$
+- $A_{n}=\frac{1}{L}\int_{L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,n=1,2,3,\dots$
+- $f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}a_{n}\cos\left( \frac{n\pi x}{L} \right)$
+- $a_{n}-\frac{1}{L}\int_{-L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,\quad n=0,1,2,\dots$
+- $u_{t}=u_{xx}, \quad 0<x<1$
+- $u_{x}(0,t)=u_{x}(1,t)=0$
+- $u(x,0)=x$
+$A_{n}=2\int_{0}^{1}x\cos(n\pi x)dx=\frac{2x}{n\pi}\sin(n\pi x)\mid_{-1}^{1}-\frac{2}{n\pi}\int_{0}^{1}\sin(n\pi x)dx=0+\frac{2}{(n\pi)^{2}}[\cos(n\pi)-1]$
+- $a_{n}=\frac{2}{(n\pi)^{2}}\cdot\begin{cases}0, \text{if  is even} \\-2, \text{if n is odd}\end{cases}$
+- $a_{2k+1}=-\frac{4}{((2k+1)\pi)^{2}}$
+- $f(x)=x=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}a_{n}\cos(n\pi x)$
+- $f(x)=\frac{1}{2}-\frac{4}{\pi^{2}}\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}\cos((2k+1)\pi x)$
+- Now we can check
+- $f(0)=0=\frac{1}{2}-\frac{4}{\pi^{2}}\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}$
+- $\frac{\pi^{2}}{8}=\sum_{k=0}^{\infty} \frac{1}{(2k+1)^{2}}$
+## Heat equation in a Ring
+- Full range Fourier series
+- $u_{t}=\alpha^{2}u_{x x}$
+- $\Delta=\frac{ \partial^{2} }{ \partial x^{2} }+\frac{ \partial^{2} }{ \partial y^{2} }+\dots$
+- $\Delta$ is the Laplace operator
+- $u_{t}=\alpha^{2}\Delta u=a^{2}[u_{x x}+u_{yy}]$
+- $\Delta u=\frac{ \partial^{2}u }{ \partial r^{2} }+\frac{1}{r}\frac{ \partial u }{ \partial r }+\frac{1}{r^{2}}\frac{ \partial^{2}u }{ \partial \theta^{2} }$
+- in 1D $\Delta u=u_{x x}$
+- $x=r\cos \theta,\quad y=r\sin \theta$
+- Heat flow in angular direction
+- $\Delta u=\frac{1}{r^{2}}\frac{ \partial^{2}u }{ \partial \theta^{2} }=\frac{ \partial^{2}u }{ \partial (r\theta)^{2} }$
+- Let $x=r\theta \implies \frac{ \partial^{2}u }{ \partial (r\theta )^{2} }=\frac{ \partial^{2}u }{ \partial x^{2} }$
+- $u_{t}=\alpha^{2}u_{x x}$
+- Let the circumference of the ring be $L$ 
+- $u\left( -\frac{L}{2},t \right)=u\left( \frac{L}{2},t \right)$
+- $u_{x}\left( -\frac{L}{2},t \right)=u_{x}\left( \frac{L}{2},t \right)$
+- For the next little while $L=\frac{L}{2}$ because I'm lazy
+- $u(x,0)=f(x)$
+- $u(x,t)=X(x)\cdot T(t)$
+- (1) $T'=\lambda\alpha^{2}T\implies T(t)=e^{\lambda\alpha^{2}t}$
+- $\begin{cases}X''-\lambda X=0\\X(-L)=X(L)\\X'(-L)=X(L)\end{cases}$
+- Case 1: $\lambda>0\implies$ trivial solution
+- Case 2: $\lambda=0\implies X_{0}(x)=1$
+- Case 2: $\lambda<0\implies r_{1,2}=\pm i\mu$
+- $X(x)=A\cos(\mu x)+B\sin(\mu x)$
+- $X'=-A\mu \sin(\mu x)+B\mu \cos(\mu x)$
+- $X(-L)=A\cos(\mu L)-B\sin(\mu L)$
+- $X(L)=A\cos(\mu L)+B\sin(\mu L)$
+- So then $B=0$ or $\mu L=n\pi \implies \mu_{n}=\frac{n\pi}{L}$
+- $X'(-L)=A\mu \sin(\mu L)++B\mu \cos(\mu L)$
+- $X'(L)=-A\mu \sin(\mu L)+B\mu \cos(\mu L)$
+- So then either $A=0$ or $\mu_{n}=\frac{n\pi}{L}$
+- $\lambda<0,\quad \mu_{n}=\frac{n\pi}{L}$
+- $X_{n}\in \{   cos\left( \frac{n\pi x}{L} \right),\sin\left( \frac{n\pi x}{L} \right) \}$
+- $u_{n}(x,t)=X_{n}(x)\cdot T_{n}(t)=\sum_{n=1}^{\infty}\left[ a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\left( \sin\left( \frac{n\pi x}{L} \right) \right) \right]T_{n}(t)$
+- $u(x,t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} e^{-(\frac{n\pi}{L}\alpha)^{2}t}[a_{n}\cos(\mu_{n}x)+b_{n}\sin(\mu_{n}x)]$
+- $a_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\cos\left( \frac{n\pi x}{L} \right)dx,\quad n=0,1,2,3$
+- $b_{n}=\frac{1}{L}\int_{-L}^{L}f(x)\sin\left( \frac{n\pi x}{L} \right)dx,\quad n=1,2,3$
+- $f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left[ a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\sin\left( \frac{n\pi x}{L} \right) \right]$
+- $L=\frac{1}{2}$
+- $f(x)=x$,assume the function to be periodic
+- $a_{0}=\frac{1}{\frac{1}{2}}\int_{-\frac{1}{2}}^{\frac{1}{2}}xdx=2\int_{0}^{1}xdx=1$
+- $a_{n}=2\int_{-\frac{1}{2}}^\frac{1}{2}x\cos\left( \frac{n\pi x}{L} \right)dx=2\int_{0}^{1}x\cos\left( \frac{n\pi x}{L} \right)dx$
+
+### Prove Orthogonality
+- $\cos(A+B)=\cos A\cos B-\sin A\sin B$
+- $\cos(A-B)=\cos A\cos B+\sin A\sin B$
+- Add them together to get $\cos A\cos B=\frac{1}{2}[\cos(A+B)+\cos(A-B)]$
+- let $A=\frac{m\pi x}{L},\quad B=\frac{n\pi x}{L}$
+- let $m=0=n$
+- $\frac{1}{2}\int_{-L}^{L}(1+1)=2L$
+- $m=n\neq 0$
+- $A=B=\frac{m\pi x}{L}$
+- $\frac{1}{2}\int_{-L}^{L}\left[ \cos\left( \frac{2m\pi x}{L} \right)+1 \right]dx$ 
+- $\int_{-L}^{L}\cos\left( \frac{2m\pi x}{L} \right)dx=\sin\left( \frac{2m\pi x}{L} \right)\mid_{-L}^{L}=0$

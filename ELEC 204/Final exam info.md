@@ -1,0 +1,10 @@
+- MT1 set 1,2
+- MT2 set 3,4,5
+- set 6-11
+	- steady state sinusoids
+	- steady state power
+	- diode
+	- transistor two problems on diode/transistor
+	- laplace
+	- filters
+- There is a final exam question from set 3-5
