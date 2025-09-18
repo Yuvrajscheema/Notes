@@ -23,11 +23,34 @@
 > An upper triangle matrix is the same but in the top right section
 
 >[!theorem]
->
+>Let $E$ be the $m\times m$ matrix with ones along the diagonal, $c$ in the entry row at $i$ and column $j$ with $i>j$ and all other entries are zeros
+>$$E=\begin{bmatrix}1 &  &  &  &  \\  & \dots &  &  &  \\
+ &  & \dots &  &  \\
+  \\  & c & & \dots  &  \\  &  &  &  & 1\end{bmatrix}$$
+  >Then for any $m\times n$ matrix $A$, matrix multiplication $EA$ applies to $A$ the elementary row row operation: add $c$ times row $j$ to $i$
+  >$\\$
+  >Furthermore, the inverse of $E$ is given by
+>$$E^{-1}=\begin{bmatrix}1 &  &  &  &  \\  & \dots &  &  &  \\
+ &  & \dots &  &  \\
+  \\  & -c & & \dots  &  \\  &  &  &  & 1\end{bmatrix}$$
+>Where $-c$ is the entry at row $i$ and column $j$.
+
+>[!example]
+>Consider the following matrix
+>$A=\begin{bmatrix} 1 & -1 & 1 & -2  \\ -1 & 1 & 1 & 1 \\ -1 & 2 & 3 & 1 \\ 1 & -1 & 2 & 1\end{bmatrix}$
+>The elementary matrix which adds $-1$ times row $1$ to row $4$ is the following
+>$\\$
+>Perform matrix multiplication to verify
+>$EA=\begin{bmatrix}1 & -1 & 1 & -2 \\ -1 & 1 & 1 & 1 \\ -1 & 2 & 3 & 1 \\ 0 & 0 & 1 & 3\end{bmatrix}$
+
+>[!theorem]
+>If $A$ can be reduced by Gaussian elimination to row echelon form _only_ with operations "add $c$ times row $j$ to row $i$" (in other words, without scaling rows and without interchanging rows), then $A$ has an <b> LU decomposition </b> of the form
+>$$A=LU$$
+ 
 
 
 
-
-
-
+  
+  
+  
 

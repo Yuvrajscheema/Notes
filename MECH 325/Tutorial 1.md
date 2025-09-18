@@ -82,7 +82,7 @@ $\implies H_{a}=34.9$ hp
 Estimate allowable horsepower from Equation 17-32 and 17-33 which are the sources for table 17-20 and compare with value found in [[Tutorial 1#Part b. | Part b.]]  
 
 Equation 17-32:  <u><b>Link plate failure</u> </b>
-$$H_{1}=K_{lp}N_{1}^{1.08}n_{1}^{0.9}p^{3-0.7p}\cdot K_{2}$$
+$$H_{1}=K_{lp}N_{1}^{1.08}n_{1}^{0.9}p^{3-0.07p}\cdot K_{2}$$
 $K_{lp}=\begin{cases}0.0022 \sim \text{no.}41 \\ 0.0040 \sim \text{other}\end{cases}$
 Plug in values to get $H_{1}=12.8K_{2}=42.4$ hp
 
