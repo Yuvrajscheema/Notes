@@ -80,7 +80,7 @@ From equation 17-27
 $N_{p}=\left[ \left( \frac{K}{T_{1}} \right)^{-b}+\left( \frac{K}{T_{2}} \right)^{-b} \right]^{-1}$
 
 From table 17-17:  Durability parameters
-D-belt$=\begin{cases}K=18726 \\ b=11.105\end{cases}$
+D-belt$=\begin{cases}K=18726\text{N} \text{ or } 4208\text{lbf} \\ b=11.105\end{cases}$
 
 Pg 906
 $T_{1}=F_{1}+\frac{K_{b}}{d}$
