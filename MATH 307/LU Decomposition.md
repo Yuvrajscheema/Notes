@@ -76,4 +76,46 @@
 >2. det$(A)=$det$(U)=u_{1,1}\dots u_{m,m}$ which are the diagonal entries of $U$
 >Note not all matrices have na **LU** decomposition. For example,
 >$$A=\begin{bmatrix}0 & 1  \\ 1 & 0\end{bmatrix}$$
->does not  have an **LU** decomposition, why? However if we allow partial pivoting (ie. interchanging rows during Gaussian elimination), then Gaussian elimination with partial pivoting computes for *any* matrix $A$
+>does not  have an **LU** decomposition, why? However if we allow partial pivoting (ie. interchanging rows during Gaussian elimination), then Gaussian elimination with partial pivoting computes for *any* matrix $A$ a decomposition $A=PLU$ where $P$ is a permutation matrix $L$ is a unit lower triangle and $U$ is an upper triangle.
+>This is called the <b>LU decomposition with partial pivoting</b> and has similar computational advantages as the LU decomposition
+
+
+# Forward and Backward Substitution
+
+>[!definition]
+>Let $A=LU$ be the LU decomposition of $A$, let $l_{i,j}$ denote the entries of $L$ and let $u_{i,j}$ denote the entries of $U$.
+>Consider the system $Ax=b$ and let $y=Ux$
+>
+>**Forward Substitution** is the process of solving the lower triangular system $Ly=b$ from top to bottom:
+>$$y_{1}=b_{1}$$
+>$$y_{2}=b_{2}-l_{2,1}y_{1}$$
+>$$\vdots$$
+>$$y_{n}=b_{n}-l_{n,1}y_{1}-\dots -l_{n,n}y_{n-1}$$
+>
+>**Backward Substitution** is the process of solving the upper triangular system $Ux=y$ from bottom to top
+>$$x_{n}=\frac{y_{n}}{u_{n,n}}$$
+>$$x_{n-1}=\frac{y_{n-1}-u_{n-1,n}x_{n}}{u_{n-1},n-1}$$	
+>$$\vdots$$
+>$$x_{1}=\frac{y_{1}-u_{1,2}x_{2}-\dots-u_{1,n}x_{n}}{u_{1,1}}$$
+
+>[!example]
+>Solve the system $Ax=b$ where 
+>$$
+>A=LU=\begin{bmatrix}1 & 0 & 0 \\
+2 & 1 & 0 \\
+1 & 1 & 1\end{bmatrix}\begin{bmatrix}2 & 4 & 2 \\
+0 & 1 & 1 \\
+0 & 0 & 1\end{bmatrix}\quad b=\begin{bmatrix}-1 \\
+1 \\
+2\end{bmatrix}
+>$$
+>Solve $Ly=b$
+>$\begin{align}y_{1}&=-1 \\ y_{2}&=1-2(-1)=3 \\ y_{3}&=2-(-1)-3=\end{align}$
+>Solve $Ux=y$
+>$\begin{align}x_{3}&=0 \\x_{2} & =3 \\ x_{1} & =\frac{-1-4(3)-0}{2}=-\frac{13}{2} \end{align}$
+>Therefore $x=\begin{bmatrix}-\frac{13}{2} \\ 3 \\ 0\end{bmatrix}$
+>Note. The LU decomposition is especially useful when solving many different systems with the _same_ coefficient matrix $A$. For example to compute the inverse $A^{-1}$ of a square matrix of size $n$ we need to solve $n$ different systems $Ax_{k}=e_{k}$ for $k=1,\dots,n$ where $e_{k}$ is the $k$th column of the identity matrix $I$.  The result is $A^{-1}=[x_{1},\dots,x_{n}]$ In other words the columns of $A^{-1}$ are given by $x_{1},\dots,x_{n}$.
+
+
+
+

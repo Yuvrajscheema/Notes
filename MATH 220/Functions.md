@@ -1,7 +1,3 @@
----
-excalidraw-plugin: parsed
-tags:
----
 >[!Definition]
 For non empty sets $A$ and $B$, a **function**  $f$ from $A$ to $B$ written $f:A \rightarrow B$ is a subset of $A\times B$ with two further properties
 >- for every a in A there is some b in B such that $(a,b) \in f$

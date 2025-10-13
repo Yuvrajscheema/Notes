@@ -137,10 +137,10 @@ $b\equiv$ belt width $=6$in
 
 From table 17-2:
 	$t=0.05$in
-	$\gamma=0.095 \frac{\text{lbf}}{\text{in}^{3}}$
+	$\gamma=0.035 \frac{\text{lbf}}{\text{in}^{3}}$
 	$F_{a}=35 \frac{\text{lbf}}{\text{in}}$
 	$f=0.5$
-$\implies W=0.025\cdot 6 \cdot 0.05 \cdot 12= 0.126 \frac{\text{lbf}}{\text{ft}}$
+$\implies W=0.035\cdot 6 \cdot 0.05 \cdot 12= 0.126 \frac{\text{lbf}}{\text{ft}}$
 $\implies F_{c}= \frac{0.126}{32.17}\cdot \left( \frac{916}{60} \right)^{2}=0.913$lbf
 
 From equation 17-8h: $F_{1a}-F_{2}=\frac{2T}{d}$
@@ -152,7 +152,7 @@ $n_{d}=1$
 $T=\frac{63025\cdot H_{nom}K_sn_{d}}{n}=90$lbf-in
 $F_{2}=F_{1a}-\frac{2T}{d}=147-2\cdot \frac{90}{2}=57$lbf
 
-From equation 18-8i:  $F_{i}=\frac{F_{1}+F_{2}}{2}-Fc=101.11$lbf
+From equation 18-8i:  $F_{i}=\frac{F_{1a}+F_{2}}{2}-Fc=101.11$lbf
 
 ## Part b.
 
