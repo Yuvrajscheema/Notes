@@ -2,7 +2,7 @@
 
 # Subspaces
 
->[!defintion]
+>[!definition]
 >A subset $U\subseteq \mathbb{R}^{n}$ is a subspace *if*
 >1. $U$ contains the zero vector $\vec{0}$
 >2. $\vec{u_{1}}+\vec{u_{2}}\in U\,\forall \vec{u_{1}}, \vec{u_{2}}\in U$

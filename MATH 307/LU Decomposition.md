@@ -21,7 +21,8 @@
 >
 > $$\begin{bmatrix}1 & 0 & 0 & 0 \\ * & 1 & 0 & 0 \\ * & * & 1 & 0 \\ * & * & * & 1\end{bmatrix}$$
 > An upper triangle matrix is the same but in the top right section
-
+> [!example]
+> Contents
 >[!theorem]
 >Let $E$ be the $m\times m$ matrix with ones along the diagonal, $c$ in the entry row at $i$ and column $j$ with $i>j$ and all other entries are zeros
 >$$E=\begin{bmatrix}1 &  &  &  &  \\  & \dots &  &  &  \\
@@ -39,7 +40,7 @@
 >Consider the following matrix
 >$A=\begin{bmatrix} 1 & -1 & 1 & -2  \\ -1 & 1 & 1 & 1 \\ -1 & 2 & 3 & 1 \\ 1 & -1 & 2 & 1\end{bmatrix}$
 >The elementary matrix which adds $-1$ times row $1$ to row $4$ is the following
->$\\$
+>
 >Perform matrix multiplication to verify
 >$EA=\begin{bmatrix}1 & -1 & 1 & -2 \\ -1 & 1 & 1 & 1 \\ -1 & 2 & 3 & 1 \\ 0 & 0 & 1 & 3\end{bmatrix}$
 

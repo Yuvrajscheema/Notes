@@ -64,10 +64,10 @@ The matrix $A$ is called the Vandermonde matrix for $t_{0},\dots,t_{d}$.
 >The determinant is the product of the diagonal entries of $U$
 >$\det(U)=(t_{1}-t_{0})(t_{2}-t_{0})(t_{2}-t_{1})$
 
-Consider $d+1$ data points $(t_{0},y_{0}),\dots,(t_{d}y_{d})$ such that $t_{i}\not={j}$ for $i\neq j$. There exist a unique polynomial $p(t)$ of degree ( at most ) $d$ such that $p(t_{k})=y_{k}$ for each $k$
+Consider $d+1$ data points $(t_{0},y_{0}),\dots,(t_{d}y_{d})$ such that $t_{i}\not=t_{j}$ for $i\neq j$. There exist a unique polynomial $p(t)$ of degree ( at most ) $d$ such that $p(t_{k})=y_{k}$ for each $k$
 
 >[!proof]
->The formula for the determinant of the Vandermonde matrix shows that $\det(A)\neq_{9}$ when the values $t_{k}$ are distinct therefore it is invertible and so there is a unique solution of the system $A\vec{c}=\vec{y}$
+>The formula for the determinant of the Vandermonde matrix shows that $\det(A)\neq{0}$ when the values $t_{k}$ are distinct therefore it is invertible and so there is a unique solution of the system $A\vec{c}=\vec{y}$
 
 
 >[!example]
@@ -87,7 +87,7 @@ Consider $d+1$ data points $(t_{0},y_{0}),\dots,(t_{d}y_{d})$ such that $t_{i}\n
 -1\end{bmatrix}
 >
 >$$
->Lets compute the LU decomposition of the Vandermonde matrix $A$ so that we can reuse the result in our other examples
+>Lets compute the [[LU Decomposition]] of the Vandermonde matrix $A$ so that we can reuse the result in our other examples
 >
 >$$L=\begin{bmatrix}1 & 0 & 0 & 0 \\
 1 & 1 & 0 & 0 \\
@@ -103,14 +103,14 @@ Consider $d+1$ data points $(t_{0},y_{0}),\dots,(t_{d}y_{d})$ such that $t_{i}\n
 >
 >Therefore the interpolating polynomial is $p(t)=-1-3t+4t^{2}-t^{3}$
 
-Note. The condition number of a Vandermonde matrix gets very large as the size of the matrix increases.
+Note. The [[Error Analysis#Condition number | condition number]] of a Vandermonde matrix gets very large as the size of the matrix increases.
 This means that interpolation by the monomial basis is very sensitive to change on the data for polynomials of large degree. For example, for $11$ equally spaced points $t_{0}=0,\dots,t_{10}=10$ the Vandermonde matrix $A$ is $11\times 11$ and has a condition number larger than $10^{12}$
 
 # Cubic spline interpolation
 
 Consider $N+1$ points $(t_{0},y_{0}),\dots,(t_{N},y_{N})$. A cubic spline is a function $p(t)$ defined piecewise by $N$ cubic polynomials $p_{1}(t),\dots,p_{N}(t)$ where
 $$
-p_{k}(t)=a_{k}(t-t_{k-1})^{3}+b_{k}(t-t_{k-1})^{2}+c_{k}(t-t_{k-1})+d_{k}\quad ,\quad t\in[t_{l-1},t_{k}]
+p_{k}(t)=a_{k}(t-t_{k-1})^{3}+b_{k}(t-t_{k-1})^{2}+c_{k}(t-t_{k-1})+d_{k}\quad ,\quad t\in[t_{k-1},t_{k}]
 $$
 such that $p(t),p'(t),p''(t)$ are continuous functions
 
