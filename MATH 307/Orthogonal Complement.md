@@ -2,7 +2,7 @@
 
 # Orthogonal Vectors
 
->[!defintion]
+>[!definition]
 >The **inner product** of vectors $\vec{x},\vec{y}\in \mathbb{R}^{n}$ is
 >$$\braket{ x , y } =\sum_{k=1}^{n} x_{k}y_{k}=x_{1}y_{1}+\dots+x_{n}y_{n}$$
 
