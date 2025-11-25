@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"MATH 307\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "path:\"MATH 257\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "path:\"Embedded Systems\" ",
+      "color": {
+        "a": 1,
+        "rgb": 5399264
+      }
+    },
+    {
+      "query": "path:\"CPEN 221\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 5399264
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0.6,
+  "nodeSizeMultiplier": 2.75257161458333,
+  "lineSizeMultiplier": 3.3263916015625,
+  "collapse-forces": true,
+  "centerStrength": 0.539754231770833,
+  "repelStrength": 12.8059895833333,
+  "linkStrength": 0.736368815104167,
+  "linkDistance": 489,
+  "scale": 0.8203795019117573,
+  "close": true
+}

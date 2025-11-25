@@ -1,0 +1,39 @@
+{
+  "callouts": {
+    "custom": [
+      "definition",
+      "theorem",
+      "proof"
+    ],
+    "settings": {
+      "definition": [
+        {
+          "changes": {
+            "icon": "lucide-bookmark",
+            "color": "227, 107, 167"
+          }
+        }
+      ],
+      "theorem": [
+        {
+          "changes": {
+            "icon": "lucide-book-text"
+          }
+        }
+      ],
+      "proof": [
+        {
+          "changes": {
+            "icon": "lucide-pencil",
+            "color": "251, 70, 76"
+          }
+        }
+      ]
+    }
+  },
+  "calloutDetection": {
+    "obsidian": true,
+    "theme": true,
+    "snippet": true
+  }
+}

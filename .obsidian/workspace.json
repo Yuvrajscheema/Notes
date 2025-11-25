@@ -1,0 +1,237 @@
+{
+  "main": {
+    "id": "9b9b3c6dd3389897",
+    "type": "split",
+    "children": [
+      {
+        "id": "91446802bbf4fded",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0c4fad052bf4325c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MATH 257/Laplaces Equation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Laplaces Equation"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ea4a4b8787b72570",
+    "type": "split",
+    "children": [
+      {
+        "id": "e754321f9795a246",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "15f58643dedb06d5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "90cf23c25c2dff4b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "7fbd449328a181f8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "47886f355bacfdd2",
+    "type": "split",
+    "children": [
+      {
+        "id": "b5586d7f68a8b069",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "910c65b17268c3e2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "MATH 307/Diagonalization.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Diagonalization"
+            }
+          },
+          {
+            "id": "984a2d9c8a2af310",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "MATH 307/Diagonalization.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Diagonalization"
+            }
+          },
+          {
+            "id": "8c5e9736549904f9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "27b3ca22e7126928",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "MATH 307/Diagonalization.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Diagonalization"
+            }
+          },
+          {
+            "id": "88118d59853f07b7",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "obsidian-kanban:Create new board": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "zk-prefixer:Create new unique note": false,
+      "callout-manager:Insert Callout": false
+    }
+  },
+  "active": "0c4fad052bf4325c",
+  "lastOpenFiles": [
+    "MATH 307/SVD.md",
+    "MATH 307/Error Analysis.md",
+    "MATH 307/QR Decomposition.md",
+    "MATH 307/Orthogonal Projection.md",
+    "MATH 307/Orthogonal Complement.md",
+    "MATH 307/Subspaces.md",
+    "MATH 307/Diagonalization.md",
+    "MATH 307/Least Square approximation.md",
+    "MATH 307/Interpolation.md",
+    "MATH 255/Two Dimensional systems and their vector fields.md",
+    "Embedded Systems/Pointers and Memory Adresses.md",
+    "Enph 353/Logbook.md",
+    "Enph 353",
+    "MATH 307/LU Decomposition.md",
+    "MATH 220/Functions.md",
+    "CPEN 221/Hash Functions.md",
+    "Embedded Systems/C Language Fundamentals for Embedded Systems.md",
+    "MATH 257/ODE Review.md",
+    "MATH 220/Contradiction.md",
+    "MECH 325/Homework 1.md",
+    "CRAZYFLIE/Spinello stuff/setup/guide_to_ardupilot_on_crazyflie.pdf",
+    "CRAZYFLIE/Spinello stuff/setup/images/connections.png",
+    "CRAZYFLIE/Spinello stuff/setup/images/ESP32-C3-ZEROIO.png",
+    "CRAZYFLIE/Spinello stuff/Lab notebook.md",
+    "CRAZYFLIE/Spinello stuff/IMG_4831.jpg",
+    "CRAZYFLIE/Spinello stuff/Drone 4 info.md",
+    "DnD/Andrea.md",
+    "DnD/Carters campaign.md",
+    "DnD/Thoriphys.md",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/49_precision_land.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/32_autotune_pitch_setup.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/03_imu_temperature_calibration_results.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/47_position_controller.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/18_notch_filter_setup.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/07_esc.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/15_motor.param",
+    "CRAZYFLIE/Spinello stuff/setup/methodicconfig/36_autotune_yawd_setup.param",
+    "CRAZYFLIE/Spinello stuff/setup/README.md",
+    "CRAZYFLIE/Spinello stuff/setup/images/crazyflieIO.png",
+    "MECH 325/Tutorial 5.md",
+    "MECH 325/images/tutorial_5_question_1.png",
+    "MECH 325/images/tutorial_4_question_2.png",
+    "MECH 325/images/homework_1_question_8_b.png",
+    "MECH 325/images/Homework_1_question_8_a.png",
+    "MECH 325/images/Homework_1_question8_a.png",
+    "MECH 325/images/tutorial_4_question_1.png"
+  ]
+}

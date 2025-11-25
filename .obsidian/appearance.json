@@ -1,0 +1,12 @@
+{
+  "theme": "obsidian",
+  "cssTheme": "Minimal",
+  "translucency": true,
+  "interfaceFontFamily": "MS Gothic",
+  "textFontFamily": "MS Gothic",
+  "monospaceFontFamily": "MS Gothic",
+  "baseFontSize": 16,
+  "showRibbon": true,
+  "accentColor": "#8a5cf5",
+  "baseFontSizeAction": true
+}
